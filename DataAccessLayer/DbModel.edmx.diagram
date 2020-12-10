@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d24a02c851742a1a363e3952313b133" Name="Diagram1">
+        <EntityTypeShape EntityType="PlaybuhModel.CONTRAGENTS" Width="1.5" PointX="1.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.EMPLOYEES" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.OPERATIONS" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.SOURCE_OPERATION" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.SUBSOURCE_OPERATION" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaybuhModel.TAXRATE" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="PlaybuhModel.FK_Contragent_id" ManuallyRouted="false" />
+        <AssociationConnector Association="PlaybuhModel.FK_Employee_id_rev" ManuallyRouted="false" />
+        <AssociationConnector Association="PlaybuhModel.FK_Subsource_operation" ManuallyRouted="false" />
+        <AssociationConnector Association="PlaybuhModel.FK_Tax_rate" ManuallyRouted="false" />
+        <AssociationConnector Association="PlaybuhModel.FK_Source_operation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PlaybuhModelContainer" CdmEntityContainer="PLAYBUHEntities">
+    <EntitySetMapping Name="CONTRAGENTS">
+      <EntityTypeMapping TypeName="PlaybuhModel.CONTRAGENTS">
+        <MappingFragment StoreEntitySet="CONTRAGENTS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES">
+      <EntityTypeMapping TypeName="PlaybuhModel.EMPLOYEES">
+        <MappingFragment StoreEntitySet="EMPLOYEES">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OPERATIONS">
+      <EntityTypeMapping TypeName="PlaybuhModel.OPERATIONS">
+        <MappingFragment StoreEntitySet="OPERATIONS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_subsource" ColumnName="id_subsource" />
+          <ScalarProperty Name="operation_date" ColumnName="operation_date" />
+          <ScalarProperty Name="revenue" ColumnName="revenue" />
+          <ScalarProperty Name="id_tax_rate" ColumnName="id_tax_rate" />
+          <ScalarProperty Name="earnings" ColumnName="earnings" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_contragent" ColumnName="id_contragent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOURCE_OPERATION">
+      <EntityTypeMapping TypeName="PlaybuhModel.SOURCE_OPERATION">
+        <MappingFragment StoreEntitySet="SOURCE_OPERATION">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="source_name" ColumnName="source_name" />
+          <ScalarProperty Name="is_revenue" ColumnName="is_revenue" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBSOURCE_OPERATION">
+      <EntityTypeMapping TypeName="PlaybuhModel.SUBSOURCE_OPERATION">
+        <MappingFragment StoreEntitySet="SUBSOURCE_OPERATION">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_source_operation" ColumnName="id_source_operation" />
+          <ScalarProperty Name="subsource_name" ColumnName="subsource_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PlaybuhModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAXRATE">
+      <EntityTypeMapping TypeName="PlaybuhModel.TAXRATE">
+        <MappingFragment StoreEntitySet="TAXRATE">
+          <ScalarProperty Name="tax_percent" ColumnName="tax_percent" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

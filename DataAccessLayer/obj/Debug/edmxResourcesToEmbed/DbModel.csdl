@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PlaybuhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONTRAGENTS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OPERATIONS" Relationship="Self.FK_Contragent_id" FromRole="CONTRAGENTS" ToRole="OPERATIONS" />
+  </EntityType>
+  <EntityType Name="EMPLOYEES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OPERATIONS" Relationship="Self.FK_Employee_id_rev" FromRole="EMPLOYEES" ToRole="OPERATIONS" />
+  </EntityType>
+  <EntityType Name="OPERATIONS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_subsource" Type="Int32" Nullable="false" />
+    <Property Name="operation_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="revenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="id_tax_rate" Type="Int32" Nullable="false" />
+    <Property Name="earnings" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="id_employee" Type="Int32" Nullable="false" />
+    <Property Name="id_contragent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CONTRAGENTS" Relationship="Self.FK_Contragent_id" FromRole="OPERATIONS" ToRole="CONTRAGENTS" />
+    <NavigationProperty Name="EMPLOYEES" Relationship="Self.FK_Employee_id_rev" FromRole="OPERATIONS" ToRole="EMPLOYEES" />
+    <NavigationProperty Name="SUBSOURCE_OPERATION" Relationship="Self.FK_Subsource_operation" FromRole="OPERATIONS" ToRole="SUBSOURCE_OPERATION" />
+    <NavigationProperty Name="TAXRATE" Relationship="Self.FK_Tax_rate" FromRole="OPERATIONS" ToRole="TAXRATE" />
+  </EntityType>
+  <EntityType Name="SOURCE_OPERATION">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="source_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="is_revenue" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SUBSOURCE_OPERATION" Relationship="Self.FK_Source_operation" FromRole="SOURCE_OPERATION" ToRole="SUBSOURCE_OPERATION" />
+  </EntityType>
+  <EntityType Name="SUBSOURCE_OPERATION">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_source_operation" Type="Int32" Nullable="false" />
+    <Property Name="subsource_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OPERATIONS" Relationship="Self.FK_Subsource_operation" FromRole="SUBSOURCE_OPERATION" ToRole="OPERATIONS" />
+    <NavigationProperty Name="SOURCE_OPERATION" Relationship="Self.FK_Source_operation" FromRole="SUBSOURCE_OPERATION" ToRole="SOURCE_OPERATION" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TAXRATE">
+    <Key>
+      <PropertyRef Name="tax_percent" />
+    </Key>
+    <Property Name="tax_percent" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OPERATIONS" Relationship="Self.FK_Tax_rate" FromRole="TAXRATE" ToRole="OPERATIONS" />
+  </EntityType>
+  <Association Name="FK_Contragent_id">
+    <End Role="CONTRAGENTS" Type="Self.CONTRAGENTS" Multiplicity="1" />
+    <End Role="OPERATIONS" Type="Self.OPERATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTRAGENTS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OPERATIONS">
+        <PropertyRef Name="id_contragent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_id_rev">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="1" />
+    <End Role="OPERATIONS" Type="Self.OPERATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OPERATIONS">
+        <PropertyRef Name="id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subsource_operation">
+    <End Role="SUBSOURCE_OPERATION" Type="Self.SUBSOURCE_OPERATION" Multiplicity="1" />
+    <End Role="OPERATIONS" Type="Self.OPERATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUBSOURCE_OPERATION">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OPERATIONS">
+        <PropertyRef Name="id_subsource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tax_rate">
+    <End Role="TAXRATE" Type="Self.TAXRATE" Multiplicity="1" />
+    <End Role="OPERATIONS" Type="Self.OPERATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAXRATE">
+        <PropertyRef Name="tax_percent" />
+      </Principal>
+      <Dependent Role="OPERATIONS">
+        <PropertyRef Name="id_tax_rate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Source_operation">
+    <End Role="SOURCE_OPERATION" Type="Self.SOURCE_OPERATION" Multiplicity="1" />
+    <End Role="SUBSOURCE_OPERATION" Type="Self.SUBSOURCE_OPERATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOURCE_OPERATION">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SUBSOURCE_OPERATION">
+        <PropertyRef Name="id_source_operation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PLAYBUHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONTRAGENTS" EntityType="Self.CONTRAGENTS" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" />
+    <EntitySet Name="OPERATIONS" EntityType="Self.OPERATIONS" />
+    <EntitySet Name="SOURCE_OPERATION" EntityType="Self.SOURCE_OPERATION" />
+    <EntitySet Name="SUBSOURCE_OPERATION" EntityType="Self.SUBSOURCE_OPERATION" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TAXRATE" EntityType="Self.TAXRATE" />
+    <AssociationSet Name="FK_Contragent_id" Association="Self.FK_Contragent_id">
+      <End Role="CONTRAGENTS" EntitySet="CONTRAGENTS" />
+      <End Role="OPERATIONS" EntitySet="OPERATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_id_rev" Association="Self.FK_Employee_id_rev">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="OPERATIONS" EntitySet="OPERATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subsource_operation" Association="Self.FK_Subsource_operation">
+      <End Role="SUBSOURCE_OPERATION" EntitySet="SUBSOURCE_OPERATION" />
+      <End Role="OPERATIONS" EntitySet="OPERATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tax_rate" Association="Self.FK_Tax_rate">
+      <End Role="TAXRATE" EntitySet="TAXRATE" />
+      <End Role="OPERATIONS" EntitySet="OPERATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Source_operation" Association="Self.FK_Source_operation">
+      <End Role="SOURCE_OPERATION" EntitySet="SOURCE_OPERATION" />
+      <End Role="SUBSOURCE_OPERATION" EntitySet="SUBSOURCE_OPERATION" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

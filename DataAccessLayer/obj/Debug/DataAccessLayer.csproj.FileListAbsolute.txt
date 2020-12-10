@@ -1,0 +1,11 @@
+E:\PLAYBUH\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+E:\PLAYBUH\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+E:\PLAYBUH\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+E:\PLAYBUH\DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\PLAYBUH\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\PLAYBUH\DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\PLAYBUH\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\PLAYBUH\DataAccessLayer\bin\Debug\ru\EntityFramework.resources.dll
+E:\PLAYBUH\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+E:\PLAYBUH\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+E:\PLAYBUH\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
