@@ -1,42 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище PlaybuhModelContainer" CdmEntityContainer="PLAYBUHEntities">
-    <EntitySetMapping Name="CONTRAGENTS">
-      <EntityTypeMapping TypeName="PlaybuhModel.CONTRAGENTS">
-        <MappingFragment StoreEntitySet="CONTRAGENTS">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PlaybuhModelContainer" CdmEntityContainer="PlaybuhEntities">
+    <EntitySetMapping Name="Contragent">
+      <EntityTypeMapping TypeName="PlaybuhModel.Contragent">
+        <MappingFragment StoreEntitySet="Contragent">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="comment" ColumnName="comment" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EMPLOYEES">
-      <EntityTypeMapping TypeName="PlaybuhModel.EMPLOYEES">
-        <MappingFragment StoreEntitySet="EMPLOYEES">
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="PlaybuhModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="FIO" ColumnName="FIO" />
           <ScalarProperty Name="description" ColumnName="description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OPERATIONS">
-      <EntityTypeMapping TypeName="PlaybuhModel.OPERATIONS">
-        <MappingFragment StoreEntitySet="OPERATIONS">
+    <EntitySetMapping Name="Operation">
+      <EntityTypeMapping TypeName="PlaybuhModel.Operation">
+        <MappingFragment StoreEntitySet="Operation">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_subsource" ColumnName="id_subsource" />
           <ScalarProperty Name="operation_date" ColumnName="operation_date" />
           <ScalarProperty Name="revenue" ColumnName="revenue" />
-          <ScalarProperty Name="id_tax_rate" ColumnName="id_tax_rate" />
           <ScalarProperty Name="earnings" ColumnName="earnings" />
           <ScalarProperty Name="create_date" ColumnName="create_date" />
-          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
-          <ScalarProperty Name="id_contragent" ColumnName="id_contragent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SOURCE_OPERATION">
-      <EntityTypeMapping TypeName="PlaybuhModel.SOURCE_OPERATION">
-        <MappingFragment StoreEntitySet="SOURCE_OPERATION">
+    <EntitySetMapping Name="SourceOperation">
+      <EntityTypeMapping TypeName="PlaybuhModel.SourceOperation">
+        <MappingFragment StoreEntitySet="SourceOperation">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="source_name" ColumnName="source_name" />
           <ScalarProperty Name="is_revenue" ColumnName="is_revenue" />
@@ -44,11 +40,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SUBSOURCE_OPERATION">
-      <EntityTypeMapping TypeName="PlaybuhModel.SUBSOURCE_OPERATION">
-        <MappingFragment StoreEntitySet="SUBSOURCE_OPERATION">
+    <EntitySetMapping Name="SubsourceOperation">
+      <EntityTypeMapping TypeName="PlaybuhModel.SubsourceOperation">
+        <MappingFragment StoreEntitySet="SubsourceOperation">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_source_operation" ColumnName="id_source_operation" />
           <ScalarProperty Name="subsource_name" ColumnName="subsource_name" />
           <ScalarProperty Name="description" ColumnName="description" />
         </MappingFragment>
@@ -65,13 +60,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TAXRATE">
-      <EntityTypeMapping TypeName="PlaybuhModel.TAXRATE">
-        <MappingFragment StoreEntitySet="TAXRATE">
+    <EntitySetMapping Name="Taxrate">
+      <EntityTypeMapping TypeName="PlaybuhModel.Taxrate">
+        <MappingFragment StoreEntitySet="Taxrate">
           <ScalarProperty Name="tax_percent" ColumnName="tax_percent" />
           <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Contragent_id" TypeName="PlaybuhModel.FK_Contragent_id" StoreEntitySet="Operation">
+      <EndProperty Name="Contragent">
+        <ScalarProperty Name="id" ColumnName="id_contragent" />
+      </EndProperty>
+      <EndProperty Name="Operation">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employee_id_rev" TypeName="PlaybuhModel.FK_Employee_id_rev" StoreEntitySet="Operation">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="id" ColumnName="id_employee" />
+      </EndProperty>
+      <EndProperty Name="Operation">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Subsource_operation" TypeName="PlaybuhModel.FK_Subsource_operation" StoreEntitySet="Operation">
+      <EndProperty Name="SubsourceOperation">
+        <ScalarProperty Name="id" ColumnName="id_subsource" />
+      </EndProperty>
+      <EndProperty Name="Operation">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Tax_rate" TypeName="PlaybuhModel.FK_Tax_rate" StoreEntitySet="Operation">
+      <EndProperty Name="Taxrate">
+        <ScalarProperty Name="tax_percent" ColumnName="id_tax_rate" />
+      </EndProperty>
+      <EndProperty Name="Operation">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Source_operation" TypeName="PlaybuhModel.FK_Source_operation" StoreEntitySet="SubsourceOperation">
+      <EndProperty Name="SourceOperation">
+        <ScalarProperty Name="id" ColumnName="id_source_operation" />
+      </EndProperty>
+      <EndProperty Name="SubsourceOperation">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

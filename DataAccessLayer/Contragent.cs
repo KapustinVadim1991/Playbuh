@@ -12,12 +12,12 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class CONTRAGENTS
+    public partial class Contragent
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CONTRAGENTS()
+        public Contragent()
         {
-            this.OPERATIONS = new HashSet<OPERATIONS>();
+            this.Operation = new HashSet<Operation>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace DataAccessLayer
         public string comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OPERATIONS> OPERATIONS { get; set; }
+        public virtual ICollection<Operation> Operation { get; set; }
     }
 }

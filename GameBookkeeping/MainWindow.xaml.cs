@@ -28,8 +28,10 @@ namespace GameBookkeeping
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var emp = new EmployeeCreator();
-            emp.AddNewEmploye("Buddy");
+            var dbaccess = new DatabaseAccess();
+            var msg = dbaccess.AddNewEmploye(new Employee("Buddy New", "somebody"));
+
+            MessageBox.Show(msg.MessageText);
         }
     }
 }

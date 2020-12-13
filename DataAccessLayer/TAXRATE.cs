@@ -12,18 +12,18 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class TAXRATE
+    public partial class Taxrate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TAXRATE()
+        public Taxrate()
         {
-            this.OPERATIONS = new HashSet<OPERATIONS>();
+            this.Operation = new HashSet<Operation>();
         }
     
         public int tax_percent { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OPERATIONS> OPERATIONS { get; set; }
+        public virtual ICollection<Operation> Operation { get; set; }
     }
 }

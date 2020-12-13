@@ -12,21 +12,17 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class OPERATIONS
+    public partial class Operation
     {
         public int id { get; set; }
-        public int id_subsource { get; set; }
-        public DateTime operation_date { get; set; }
+        public System.DateTime operation_date { get; set; }
         public decimal revenue { get; set; }
-        public int id_tax_rate { get; set; }
         public Nullable<decimal> earnings { get; set; }
-        public Nullable<DateTime> create_date { get; set; }
-        public int id_employee { get; set; }
-        public int id_contragent { get; set; }
+        public Nullable<System.DateTime> create_date { get; set; }
     
-        public virtual CONTRAGENTS CONTRAGENTS { get; set; }
-        public virtual EMPLOYEES EMPLOYEES { get; set; }
-        public virtual SUBSOURCE_OPERATION SUBSOURCE_OPERATION { get; set; }
-        public virtual TAXRATE TAXRATE { get; set; }
+        public virtual Contragent Contragent { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual SubsourceOperation SubsourceOperation { get; set; }
+        public virtual Taxrate Taxrate { get; set; }
     }
 }

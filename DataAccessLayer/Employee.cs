@@ -12,20 +12,20 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class SOURCE_OPERATION
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SOURCE_OPERATION()
+        public Employee(string FIO, string description)
         {
-            this.SUBSOURCE_OPERATION = new HashSet<SUBSOURCE_OPERATION>();
+            this.FIO = FIO;
+            this.description = description;
         }
-    
+
         public int id { get; set; }
-        public string source_name { get; set; }
-        public bool is_revenue { get; set; }
+        public string FIO { get; set; }
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUBSOURCE_OPERATION> SUBSOURCE_OPERATION { get; set; }
+        public virtual ICollection<Operation> Operation { get; set; }
     }
 }

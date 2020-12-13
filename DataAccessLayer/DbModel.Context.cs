@@ -13,10 +13,10 @@ namespace DataAccessLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PLAYBUHEntities : DbContext
+    public partial class PlaybuhEntities : DbContext
     {
-        public PLAYBUHEntities()
-            : base("name=PLAYBUHEntities")
+        public PlaybuhEntities()
+            : base("name=PlaybuhEntities")
         {
         }
     
@@ -25,12 +25,12 @@ namespace DataAccessLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CONTRAGENTS> CONTRAGENTS { get; set; }
-        public virtual DbSet<EMPLOYEES> EMPLOYEES { get; set; }
-        public virtual DbSet<OPERATIONS> OPERATIONS { get; set; }
-        public virtual DbSet<SOURCE_OPERATION> SOURCE_OPERATION { get; set; }
-        public virtual DbSet<SUBSOURCE_OPERATION> SUBSOURCE_OPERATION { get; set; }
+        public virtual DbSet<Contragent> Contragent { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Operation> Operation { get; set; }
+        public virtual DbSet<SourceOperation> SourceOperation { get; set; }
+        public virtual DbSet<SubsourceOperation> SubsourceOperation { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TAXRATE> TAXRATE { get; set; }
+        public virtual DbSet<Taxrate> Taxrate { get; set; }
     }
 }

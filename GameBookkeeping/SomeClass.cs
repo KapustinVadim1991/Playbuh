@@ -8,5 +8,6 @@ namespace GameBookkeeping
 {
     class SomeClass
     {
+
     }
 }
