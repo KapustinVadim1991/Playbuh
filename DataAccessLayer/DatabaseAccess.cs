@@ -86,7 +86,7 @@ namespace DataAccessLayer
 
         private MsgServerResponce Validation(SubsourceOperation subsourceOperation)
         {
-            if (String.IsNullOrEmpty(subsourceOperation.subsource_name)
+            if (String.IsNullOrEmpty(subsourceOperation.subsource_name))
             {
                 return new MsgServerResponce(false, "Имя статьи расходов/доходов не может быть пустым.");
             }
