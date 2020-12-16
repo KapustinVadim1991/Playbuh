@@ -15,9 +15,11 @@ namespace DataAccessLayer
     public partial class Taxrate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Taxrate()
+        public Taxrate(int taxPercent, string description = null)
         {
             this.Operation = new HashSet<Operation>();
+            tax_percent = taxPercent;
+            Description = description;
         }
     
         public int tax_percent { get; set; }

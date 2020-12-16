@@ -15,8 +15,9 @@ namespace DataAccessLayer
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee(string FIO, string description)
+        public Employee(string FIO, string description = null)
         {
+            this.Operation = new HashSet<Operation>();
             this.FIO = FIO;
             this.description = description;
         }

@@ -15,9 +15,12 @@ namespace DataAccessLayer
     public partial class SubsourceOperation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SubsourceOperation()
+        public SubsourceOperation(string subsourceName, SourceOperation sourceOperation, string description = null)
         {
             this.Operation = new HashSet<Operation>();
+            this.subsource_name = subsourceName;
+            this.description = description;
+            SourceOperation = sourceOperation;
         }
     
         public int id { get; set; }
