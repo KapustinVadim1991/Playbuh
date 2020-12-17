@@ -5,7 +5,7 @@ namespace DataAccessLayer
 {
     public class DatabaseAccess
     {
-        public MsgServerResponce AddNewEmploye(Employee employee)
+        public MsgServerResponce AddEmployee(Employee employee)
         {
             MsgServerResponce validationMessage = Validation(employee);
 
@@ -18,7 +18,7 @@ namespace DataAccessLayer
             {
                 using (PlaybuhEntities context = new PlaybuhEntities())
                 {
-                    if (context.Employee.Where(x=>x.FIO == employee.FIO).Count() > 0)
+                    if (context.Employee.FirstOrDefault(x=>x.FIO == employee.FIO) != null)
                     {
                         return new MsgServerResponce(false, "Данный сотрудник уже добавлен");
                     }
@@ -27,6 +27,38 @@ namespace DataAccessLayer
                     context.SaveChanges();
 
                     return validationMessage;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgServerResponce(false, ex.Message);
+            }
+        }
+
+        public MsgServerResponce RemoveEmployee(Employee employee)
+        {
+            MsgServerResponce validationMessage = Validation(employee);
+
+            if (!validationMessage.IsSucceed)
+            {
+                return validationMessage;
+            }
+
+            try
+            {
+                using (PlaybuhEntities context = new PlaybuhEntities())
+                {
+                    employee = context.Employee.FirstOrDefault(x => x.FIO == employee.FIO);
+
+                    if (employee == null)
+                    {
+                        return new MsgServerResponce(false, "Данный сотрудник не найден.");
+                    }
+
+                    context.Employee.Remove(employee);
+                    context.SaveChanges();
+
+                    return new MsgServerResponce(true, $"{employee.FIO} успешно удален.");
                 }
             }
             catch (Exception ex)
@@ -63,7 +95,7 @@ namespace DataAccessLayer
             {
                 using (PlaybuhEntities context = new PlaybuhEntities())
                 {
-                    if (context.Contragent.First(x=>x.title == contragent.title && x.comment == contragent.comment) == null)
+                    if (context.Contragent.Where(x=>x.title == contragent.title && x.comment == contragent.comment) != null)
                     {
                         return new MsgServerResponce(false, "Данный контрагент уже существует.");
                     }
@@ -223,5 +255,49 @@ namespace DataAccessLayer
 
             return new MsgServerResponce(true, $"Статья расходов/доходов {subsourceOperation.subsource_name} добавлена");
         }
+
+        /*public MsgServerResponce AddOperation(Operation operation)
+        {
+            MsgServerResponce validationMessage = Validation(operation);
+
+            if (!validationMessage.IsSucceed)
+            {
+                return validationMessage;
+            }
+
+            try
+            {
+                using (PlaybuhEntities context = new PlaybuhEntities())
+                {
+                    if (context.SubsourceOperation.Contains(subsourceOperation))
+                    {
+                        return new MsgServerResponce(false, "Данная статья доходов/расходов уже существует.");
+                    }
+
+                    context.SubsourceOperation.Add(subsourceOperation);
+                    context.SaveChanges();
+
+                    return validationMessage;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgServerResponce(false, ex.Message);
+            }
+        }
+
+        private MsgServerResponce Validation(SubsourceOperation subsourceOperation)
+        {
+            if (String.IsNullOrEmpty(subsourceOperation.subsource_name))
+            {
+                return new MsgServerResponce(false, "Имя статьи расходов/доходов не может быть пустым.");
+            }
+            if (subsourceOperation.SourceOperation == null)
+            {
+                return new MsgServerResponce(false, "Выберите источник расходов/доходов.");
+            }
+
+            return new MsgServerResponce(true, $"Статья расходов/доходов {subsourceOperation.subsource_name} добавлена");
+        }*/
     }
 }

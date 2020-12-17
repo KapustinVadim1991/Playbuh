@@ -9,12 +9,29 @@ namespace DataAccessLayer
     public class MsgServerResponce
     {
         public bool IsSucceed { get; private set; }
-        public string MessageText { get; private set; }
+        public string Message { get; private set; }
 
         public MsgServerResponce(bool isSucceed, string message)
         {
             IsSucceed = isSucceed;
-            MessageText = message;
+            Message = message;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var msg = (MsgServerResponce)obj;
+
+            if(msg.IsSucceed == IsSucceed && msg.Message == Message)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
