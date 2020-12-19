@@ -58,3 +58,9 @@ E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.csproj.Genera
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.csproj.CopyComplete
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.exe
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.pdb
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.dll
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.dll
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.pdb
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.dll.config
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.pdb
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.xml
