@@ -24,14 +24,13 @@ namespace GameBookkeeping
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var dbaccess = new DatabaseAccess();
-            var msg = dbaccess.AddNewEmploye(new Employee("Вадим"));
 
-            MessageBox.Show(msg.MessageText);
         }
     }
 }

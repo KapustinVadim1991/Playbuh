@@ -4,10 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBookkeeping"
+        xmlns:ent="clr-namespace:DataAccessLayer;assembly=DataAccessLayer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="AddEmploee" HorizontalAlignment="Left" Margin="30,27,0,0" VerticalAlignment="Top" Width="113" Height="30" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="100"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="Добавить сотрудника" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
+            <Button Content="Добавить контрагента" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
+            <Button Content="Добавить операцию" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <ComboBox MinWidth="200" MaxWidth="500" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
+
+            </ComboBox>
+        </StackPanel>
 
     </Grid>
 </Window>

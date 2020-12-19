@@ -15,6 +15,8 @@ namespace DataAccessLayer
     public partial class Contragent
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Contragent() { }
+
         public Contragent(string title, string comment = null)
         {
             this.Operation = new HashSet<Operation>();

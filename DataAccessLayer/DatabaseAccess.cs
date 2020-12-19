@@ -5,6 +5,23 @@ namespace DataAccessLayer
 {
     public class DatabaseAccess
     {
+
+        #region Employee...
+        public Employee[] GetEmployees()
+        {
+            try
+            {
+                using (PlaybuhEntities context = new PlaybuhEntities())
+                {
+                    return context.Employee.ToArray();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public MsgServerResponce AddEmployee(Employee employee)
         {
             MsgServerResponce validationMessage = Validation(employee);
@@ -20,7 +37,7 @@ namespace DataAccessLayer
                 {
                     if (context.Employee.FirstOrDefault(x=>x.FIO == employee.FIO) != null)
                     {
-                        return new MsgServerResponce(false, "Данный сотрудник уже добавлен");
+                        return new MsgServerResponce("Данный сотрудник уже добавлен.");
                     }
 
                     context.Employee.Add(employee);
@@ -31,7 +48,7 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                return new MsgServerResponce(false, ex.Message);
+                return new MsgServerResponce(ex.Message);
             }
         }
 
@@ -52,18 +69,18 @@ namespace DataAccessLayer
 
                     if (employee == null)
                     {
-                        return new MsgServerResponce(false, "Данный сотрудник не найден.");
+                        return new MsgServerResponce("Данный сотрудник не найден.");
                     }
 
                     context.Employee.Remove(employee);
                     context.SaveChanges();
 
-                    return new MsgServerResponce(true, $"{employee.FIO} успешно удален.");
+                    return new MsgServerResponce($"{employee.FIO} успешно удален.", true);
                 }
             }
             catch (Exception ex)
             {
-                return new MsgServerResponce(false, ex.Message);
+                return new MsgServerResponce(ex.Message);
             }
         }
 
@@ -71,15 +88,32 @@ namespace DataAccessLayer
         {
             if(employee == null)
             {
-                return new MsgServerResponce(false, "Сотрудник не может быть null.");
+                return new MsgServerResponce("Сотрудник не может быть null.");
             }
 
             if (String.IsNullOrEmpty(employee.FIO))
             {
-                return new MsgServerResponce(false, "ФИО сотрудника не может быть пустым");
+                return new MsgServerResponce("ФИО сотрудника не может быть пустым.");
             }
 
-            return new MsgServerResponce(true, $"{employee.FIO} успешно добавлен.");
+            return new MsgServerResponce($"{employee.FIO} успешно добавлен.", true);
+        }
+        #endregion
+
+        #region Contragent...
+        public Contragent[] GetContragents()
+        {
+            try
+            {
+                using (PlaybuhEntities context = new PlaybuhEntities())
+                {
+                    return context.Contragent.ToArray();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public MsgServerResponce AddContragent(Contragent contragent)
@@ -95,9 +129,9 @@ namespace DataAccessLayer
             {
                 using (PlaybuhEntities context = new PlaybuhEntities())
                 {
-                    if (context.Contragent.Where(x=>x.title == contragent.title && x.comment == contragent.comment) != null)
+                    if (context.Contragent.FirstOrDefault(x=>x.title == contragent.title) != null)
                     {
-                        return new MsgServerResponce(false, "Данный контрагент уже существует.");
+                        return new MsgServerResponce("Данный контрагент уже существует.");
                     }
 
                     context.Contragent.Add(contragent);
@@ -108,7 +142,39 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                return new MsgServerResponce(false, ex.Message);
+                return new MsgServerResponce(ex.Message);
+            }
+        }
+
+        public MsgServerResponce RemoveContragent(Contragent contragent)
+        {
+            MsgServerResponce validationMessage = Validation(contragent);
+
+            if (!validationMessage.IsSucceed)
+            {
+                return validationMessage;
+            }
+
+            try
+            {
+                using (PlaybuhEntities context = new PlaybuhEntities())
+                {
+                    contragent = context.Contragent.FirstOrDefault(x => x.title == contragent.title);
+
+                    if (contragent == null)
+                    {
+                        return new MsgServerResponce("Данный контрагент не найден.");
+                    }
+
+                    context.Contragent.Remove(contragent);
+                    context.SaveChanges();
+
+                    return new MsgServerResponce($"{contragent.title} успешно удален.", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgServerResponce(ex.Message);
             }
         }
 
@@ -116,17 +182,18 @@ namespace DataAccessLayer
         {
             if (contragent == null)
             {
-                return new MsgServerResponce(false, "Контрагент не может быть null.");
+                return new MsgServerResponce("Контрагент не может быть null.");
             }
 
             if (String.IsNullOrEmpty(contragent.title))
             {
-                return new MsgServerResponce(false, "Имя контрагента не может быть пустым");
+                return new MsgServerResponce("Имя контрагента не может быть пустым.");
             }
 
-            return new MsgServerResponce(true, $"{contragent.title} успешно добавлен.");
+            return new MsgServerResponce($"{contragent.title} успешно добавлен.", true);
         }
-
+        #endregion
+        /*
         public MsgServerResponce AddTaxrate(Taxrate taxrate)
         {
             MsgServerResponce validationMessage = Validation(taxrate);
@@ -255,7 +322,7 @@ namespace DataAccessLayer
 
             return new MsgServerResponce(true, $"Статья расходов/доходов {subsourceOperation.subsource_name} добавлена");
         }
-
+        */
         /*public MsgServerResponce AddOperation(Operation operation)
         {
             MsgServerResponce validationMessage = Validation(operation);

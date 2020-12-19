@@ -11,7 +11,7 @@ namespace DataAccessLayer
         public bool IsSucceed { get; private set; }
         public string Message { get; private set; }
 
-        public MsgServerResponce(bool isSucceed, string message)
+        public MsgServerResponce(string message, bool isSucceed = false)
         {
             IsSucceed = isSucceed;
             Message = message;
