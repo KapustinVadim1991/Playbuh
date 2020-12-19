@@ -22,7 +22,6 @@
 
         <StackPanel Grid.Row="1">
             <ComboBox MinWidth="200" MaxWidth="500" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
-
             </ComboBox>
         </StackPanel>
 
