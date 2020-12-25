@@ -10,7 +10,7 @@ namespace DataAccessLayer.Tests
 {
     class Tests
     {
-        [Test]
+        /*[Test]
         public void TestAddEmployee()
         {
             var dal = new DatabaseAccess();
@@ -44,6 +44,6 @@ namespace DataAccessLayer.Tests
             var dal = new DatabaseAccess();
             Assert.AreEqual(new MsgServerResponce("Данный контрагент не найден."), dal.RemoveContragent(new Contragent("Hoohle")));
             Assert.AreEqual(new MsgServerResponce("TestContragent успешно удален.", true), dal.RemoveContragent(new Contragent("TestContragent")));
-        }
+        }*/
     }
 }

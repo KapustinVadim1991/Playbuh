@@ -56,74 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contragent.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseAccess.cs" />
-    <Compile Include="DbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Model\Contragent.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Operation.cs" />
+    <Compile Include="Model\PlaybuhEntities.cs" />
+    <Compile Include="Model\Subitem.cs" />
+    <Compile Include="Model\Taxrate.cs" />
     <Compile Include="MsgServerResponce.cs" />
-    <Compile Include="Operation.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SourceOperation.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubsourceOperation.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Taxrate.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tests\Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="DbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DbModel.edmx.diagram">
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="DbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-      <LastGenOutput>DbModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

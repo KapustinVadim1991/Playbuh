@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using DataAccessLayer.Model;
 
 namespace DataAccessLayer
 {
@@ -22,7 +23,7 @@ namespace DataAccessLayer
             }
         }
 
-        public MsgServerResponce AddEmployee(Employee employee)
+        /*public MsgServerResponce AddEmployee(Employee employee)
         {
             MsgServerResponce validationMessage = Validation(employee);
 
@@ -50,9 +51,9 @@ namespace DataAccessLayer
             {
                 return new MsgServerResponce(ex.Message);
             }
-        }
+        }*/
 
-        public MsgServerResponce RemoveEmployee(Employee employee)
+        /*public MsgServerResponce RemoveEmployee(Employee employee)
         {
             MsgServerResponce validationMessage = Validation(employee);
 
@@ -82,9 +83,9 @@ namespace DataAccessLayer
             {
                 return new MsgServerResponce(ex.Message);
             }
-        }
+        }*/
 
-        private MsgServerResponce Validation(Employee employee)
+        /*private MsgServerResponce Validation(Employee employee)
         {
             if(employee == null)
             {
@@ -97,10 +98,10 @@ namespace DataAccessLayer
             }
 
             return new MsgServerResponce($"{employee.FIO} успешно добавлен.", true);
-        }
+        }*/
         #endregion
 
-        #region Contragent...
+        /*#region Contragent...
         public Contragent[] GetContragents()
         {
             try
@@ -193,7 +194,7 @@ namespace DataAccessLayer
             return new MsgServerResponce($"{contragent.title} успешно добавлен.", true);
         }
         #endregion
-        /*
+        
         public MsgServerResponce AddTaxrate(Taxrate taxrate)
         {
             MsgServerResponce validationMessage = Validation(taxrate);
