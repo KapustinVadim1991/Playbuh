@@ -4,31 +4,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer;
+using DataAccessLayer.Model;
 
 namespace DataAccessLayer.Tests
 {
     class Tests
     {
-        /*[Test]
+        [Test]
         public void TestAddEmployee()
         {
             var dal = new DatabaseAccess();
-            Assert.AreEqual(new MsgServerResponce("Данный сотрудник уже добавлен."), dal.AddEmployee(new Employee("Вадим")));
-            Assert.AreEqual(new MsgServerResponce("ФИО сотрудника не может быть пустым."), dal.AddEmployee(new Employee("")));
-            Assert.AreEqual(new MsgServerResponce("Сотрудник не может быть null."), dal.AddEmployee(null));
-            Assert.AreEqual(new MsgServerResponce("TestUser успешно добавлен.", true), dal.AddEmployee(new Employee("TestUser")));
+
+            try
+            {
+                dal.AddEmployee(new Employee("Вадим", "Капустин", "Викторович"));
+            }
+            catch(ArgumentException ex)
+            {
+                Assert.AreEqual("Данный сотрудник уже добавлен.", ex.Message);
+            }
+
+            try
+            {
+                dal.AddEmployee(new Employee("", "Капустин", "Викторович"));
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("ФИО сотрудника не может быть пустым.", ex.Message);
+            }
+
+            try
+            {
+                dal.AddEmployee(null);
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("Сотрудник не может быть null.", ex.Message);
+            }
+
+            //try
+            //{
+            //    dal.AddEmployee(new Employee("TestUser", "sdf", "sdf"));
+            //}
+            //catch (Exception e)
+            //{
+            //    throw e;
+            //}
         }
 
         [Test]
         public void TestRemoveEmployee()
         {
             var dal = new DatabaseAccess();
-            Assert.AreEqual(new MsgServerResponce("TestUser успешно удален.", true), dal.RemoveEmployee(new Employee("TestUser")));
-            Assert.AreEqual(new MsgServerResponce("Данный сотрудник не найден."), dal.RemoveEmployee(new Employee("Somebody")));
+
+            try
+            {
+                dal.RemoveEmployee(new Employee("Игорь", "Капустин", "Викторович"));
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("Данный сотрудник не найден.", ex.Message);
+            }
+
+            //try
+            //{
+            //    dal.RemoveEmployee(new Employee("TestUser", "sdf", "sdf"));
+            //}
+            //catch (Exception e)
+            //{
+            //    throw e;
+            //}
         }
 
-        [Test]
+        /*[Test]
         public void TestAddContragent()
         {
             var dal = new DatabaseAccess();

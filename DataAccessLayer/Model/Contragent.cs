@@ -24,5 +24,8 @@ namespace DataAccessLayer.Model
 
         [Column("comment")]
         public string Comment { get; set; }
+
+        [Column("archive")]
+        public bool IsArchive { get; set; }
     }
 }

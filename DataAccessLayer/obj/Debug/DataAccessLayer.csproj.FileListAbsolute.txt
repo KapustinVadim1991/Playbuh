@@ -13,3 +13,4 @@ E:\GitRepository\Playbuh\DataAccessLayer\bin\Debug\ru\EntityFramework.SqlServer.
 E:\GitRepository\Playbuh\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 E:\GitRepository\Playbuh\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\GitRepository\Playbuh\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+E:\GitRepository\Playbuh\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache

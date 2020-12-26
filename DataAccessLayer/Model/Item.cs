@@ -27,5 +27,8 @@ namespace DataAccessLayer.Model
 
         [Column("descriprion")]
         public string Description { get; set; }
+
+        [Column("archive")]
+        public bool IsArchive { get; set; }
     }
 }

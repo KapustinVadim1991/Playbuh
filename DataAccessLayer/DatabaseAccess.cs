@@ -14,7 +14,7 @@ namespace DataAccessLayer
             {
                 using (PlaybuhEntities context = new PlaybuhEntities())
                 {
-                    return context.Employee.ToArray();
+                    return context.Employee.OrderBy(x=>x.LastName).ToArray();
                 }
             }
             catch(Exception ex)
@@ -23,82 +23,58 @@ namespace DataAccessLayer
             }
         }
 
-        /*public MsgServerResponce AddEmployee(Employee employee)
+        public void AddEmployee(Employee employee)
         {
-            MsgServerResponce validationMessage = Validation(employee);
+            Validation(employee);
 
-            if (!validationMessage.IsSucceed)
+            using (PlaybuhEntities context = new PlaybuhEntities())
             {
-                return validationMessage;
-            }
-
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (context.Employee.FirstOrDefault(x=>x.LastName == employee.LastName 
+                                                    && x.FirstName == employee.FirstName 
+                                                    && x.MiddleName == employee.MiddleName) != null)
                 {
-                    if (context.Employee.FirstOrDefault(x=>x.FIO == employee.FIO) != null)
-                    {
-                        return new MsgServerResponce("Данный сотрудник уже добавлен.");
-                    }
-
-                    context.Employee.Add(employee);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    throw new ArgumentException("Данный сотрудник уже добавлен.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(ex.Message);
-            }
-        }*/
 
-        /*public MsgServerResponce RemoveEmployee(Employee employee)
+                context.Employee.Add(employee);
+                context.SaveChanges();
+            }            
+        }
+
+        public void RemoveEmployee(Employee employee)
         {
-            MsgServerResponce validationMessage = Validation(employee);
+            Validation(employee);
 
-            if (!validationMessage.IsSucceed)
+            using (PlaybuhEntities context = new PlaybuhEntities())
             {
-                return validationMessage;
-            }
+                employee = context.Employee.FirstOrDefault(x => x.LastName == employee.LastName
+                                                    && x.FirstName == employee.FirstName
+                                                    && x.MiddleName == employee.MiddleName);
 
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (employee == null)
                 {
-                    employee = context.Employee.FirstOrDefault(x => x.FIO == employee.FIO);
-
-                    if (employee == null)
-                    {
-                        return new MsgServerResponce("Данный сотрудник не найден.");
-                    }
-
-                    context.Employee.Remove(employee);
-                    context.SaveChanges();
-
-                    return new MsgServerResponce($"{employee.FIO} успешно удален.", true);
+                    throw new ArgumentException("Данный сотрудник не найден.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(ex.Message);
-            }
-        }*/
 
-        /*private MsgServerResponce Validation(Employee employee)
+                employee.IsArchive = true;
+                context.SaveChanges();
+            }
+        }
+
+        private void Validation(Employee employee)
         {
             if(employee == null)
             {
-                return new MsgServerResponce("Сотрудник не может быть null.");
+                throw new ArgumentException("Сотрудник не может быть null.");
             }
 
-            if (String.IsNullOrEmpty(employee.FIO))
+            if (String.IsNullOrEmpty(employee.LastName) 
+                || String.IsNullOrEmpty(employee.FirstName)
+                || String.IsNullOrEmpty(employee.MiddleName))
             {
-                return new MsgServerResponce("ФИО сотрудника не может быть пустым.");
+                throw new ArgumentException("ФИО сотрудника не может быть пустым.");
             }
-
-            return new MsgServerResponce($"{employee.FIO} успешно добавлен.", true);
-        }*/
+        }
         #endregion
 
         /*#region Contragent...
