@@ -6,20 +6,24 @@ namespace DataAccessLayer
 {
     public class DatabaseAccess
     {
+        private PlaybuhEntities GetContext()
+        {
+            return new PlaybuhEntities();
+        }
 
         #region Employee...
-        public Employee[] GetEmployees()
+        public Employee[] GetEmployees(bool showArchive = false)
         {
-            try
+            using (var context = GetContext())
             {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (showArchive)
                 {
-                    return context.Employee.OrderBy(x=>x.LastName).ToArray();
+                    return context.Employee.OrderBy(x => x.LastName).ToArray();
                 }
-            }
-            catch(Exception ex)
-            {
-                throw ex;
+
+                return context.Employee.OrderBy(x => x.LastName)
+                                        .Where(y => !y.IsArchive)
+                                        .ToArray();
             }
         }
 
@@ -27,7 +31,7 @@ namespace DataAccessLayer
         {
             Validation(employee);
 
-            using (PlaybuhEntities context = new PlaybuhEntities())
+            using (var context = GetContext())
             {
                 if (context.Employee.FirstOrDefault(x=>x.LastName == employee.LastName 
                                                     && x.FirstName == employee.FirstName 
@@ -41,15 +45,11 @@ namespace DataAccessLayer
             }            
         }
 
-        public void RemoveEmployee(Employee employee)
+        public void RemoveEmployee(int employeeId)
         {
-            Validation(employee);
-
-            using (PlaybuhEntities context = new PlaybuhEntities())
+            using (var context = GetContext())
             {
-                employee = context.Employee.FirstOrDefault(x => x.LastName == employee.LastName
-                                                    && x.FirstName == employee.FirstName
-                                                    && x.MiddleName == employee.MiddleName);
+                Employee employee = context.Employee.FirstOrDefault(x => x.Id == employeeId);
 
                 if (employee == null)
                 {
@@ -77,271 +77,286 @@ namespace DataAccessLayer
         }
         #endregion
 
-        /*#region Contragent...
-        public Contragent[] GetContragents()
+        #region Contragent...
+        public Contragent[] GetContragents(bool showArchive = false)
         {
-            try
+            using (var context = GetContext())
             {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (showArchive)
                 {
-                    return context.Contragent.ToArray();
+                    return context.Contragent.OrderBy(x => x.Title).ToArray();
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+
+                return context.Contragent.OrderBy(x => x.Title)
+                                         .Where(y => !y.IsArchive)
+                                         .ToArray();
             }
         }
 
-        public MsgServerResponce AddContragent(Contragent contragent)
+        public void AddContragent(Contragent contragent)
         {
-            MsgServerResponce validationMessage = Validation(contragent);
+            Validation(contragent);
 
-            if (!validationMessage.IsSucceed)
+            using (var context = GetContext())
             {
-                return validationMessage;
-            }
-
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (context.Contragent.FirstOrDefault(x => x.Title == contragent.Title) != null)
                 {
-                    if (context.Contragent.FirstOrDefault(x=>x.title == contragent.title) != null)
-                    {
-                        return new MsgServerResponce("Данный контрагент уже существует.");
-                    }
-
-                    context.Contragent.Add(contragent);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    throw new ArgumentException("Данный контрагент уже добавлен.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(ex.Message);
+
+                context.Contragent.Add(contragent);
+                context.SaveChanges();
             }
         }
 
-        public MsgServerResponce RemoveContragent(Contragent contragent)
+        public void RemoveContragent(int contragentId)
         {
-            MsgServerResponce validationMessage = Validation(contragent);
-
-            if (!validationMessage.IsSucceed)
+            using (var context = GetContext())
             {
-                return validationMessage;
-            }
+                Contragent contragent = context.Contragent.FirstOrDefault(x => x.Id == contragentId);
 
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (contragent == null)
                 {
-                    contragent = context.Contragent.FirstOrDefault(x => x.title == contragent.title);
-
-                    if (contragent == null)
-                    {
-                        return new MsgServerResponce("Данный контрагент не найден.");
-                    }
-
-                    context.Contragent.Remove(contragent);
-                    context.SaveChanges();
-
-                    return new MsgServerResponce($"{contragent.title} успешно удален.", true);
+                    throw new ArgumentException("Данный контрагент не найден.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(ex.Message);
+
+                contragent.IsArchive = true;
+                context.SaveChanges();
             }
         }
 
-        private MsgServerResponce Validation(Contragent contragent)
+        private void Validation(Contragent contragent)
         {
             if (contragent == null)
             {
-                return new MsgServerResponce("Контрагент не может быть null.");
+                throw new ArgumentException("Контрагент не может быть null.");
             }
 
-            if (String.IsNullOrEmpty(contragent.title))
+            if (String.IsNullOrEmpty(contragent.Title))
             {
-                return new MsgServerResponce("Имя контрагента не может быть пустым.");
+                throw new ArgumentException("Наименование контрагента не может быть пустым.");
+            }
+        }
+        #endregion
+
+        #region Item...
+        public Item[] GetItems(bool showArchive = false)
+        {
+            using (var context = GetContext())
+            {
+                if (showArchive)
+                {
+                    return context.Item.OrderBy(x => x.ItemName).ToArray();
+                }
+
+                return context.Item.OrderBy(x => x.ItemName)
+                                   .Where(y => !y.IsArchive)
+                                   .ToArray();
+            }
+        }
+
+        public void AddItem(Item item)
+        {
+            Validation(item);
+
+            using (var context = GetContext())
+            {
+                if (context.Item.FirstOrDefault(x => x.ItemName == item.ItemName
+                                                        && x.IsRevenue == item.IsRevenue
+                                                        && x.Description == item.Description) != null)
+                {
+                    throw new ArgumentException("Данная статья уже добавлена.");
+                }
+
+                context.Item.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoveItem(int itemId)
+        {
+            using (var context = GetContext())
+            {
+                Item item = context.Item.FirstOrDefault(x => x.Id == itemId);
+
+                if (item == null)
+                {
+                    throw new ArgumentException("Данная статья не найдена.");
+                }
+
+                item.IsArchive = true;
+                context.SaveChanges();
+            }
+        }
+
+        private void Validation(Item item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentException("Статья не может быть null.");
             }
 
-            return new MsgServerResponce($"{contragent.title} успешно добавлен.", true);
+            if (String.IsNullOrEmpty(item.ItemName))
+            {
+                throw new ArgumentException("Наименование статьи не может быть пустым.");
+            }
+        }
+        #endregion
+
+        #region Subitem...
+        public Subitem[] GetSubitems(bool showArchive = false)
+        {
+            using (var context = GetContext())
+            {
+                if (showArchive)
+                {
+                    return context.Subitem.OrderBy(x => x.SubitemName).ToArray();
+                }
+
+                return context.Subitem.OrderBy(x => x.SubitemName)
+                                      .Where(y => !y.IsArchive)
+                                      .ToArray();
+            }
+        }
+
+        public void AddSubitem(Subitem subitem)
+        {
+            Validation(subitem);
+
+            using (var context = GetContext())
+            {
+                if (context.Subitem.FirstOrDefault(x => x.SubitemName == subitem.SubitemName
+                                                        && x.Description == subitem.Description
+                                                        && x.ItemId == subitem.ItemId) != null)
+                {
+                    throw new ArgumentException("Данная подстатья уже добавлена.");
+                }
+
+                context.Subitem.Add(subitem);
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoveSubitem(int subitemId)
+        {
+            using (var context = GetContext())
+            {
+                Subitem subitem = context.Subitem.FirstOrDefault(x => x.Id == subitemId);
+
+                if (subitem == null)
+                {
+                    throw new ArgumentException("Данная подстатья не найдена.");
+                }
+
+                subitem.IsArchive = true;
+                context.SaveChanges();
+            }
+        }
+
+        private void Validation(Subitem subitem)
+        {
+            if (subitem == null)
+            {
+                throw new ArgumentException("Подстатья не может быть null.");
+            }
+
+            if (String.IsNullOrEmpty(subitem.SubitemName))
+            {
+                throw new ArgumentException("Наименование подстатьи не может быть пустым.");
+            }
         }
         #endregion
         
-        public MsgServerResponce AddTaxrate(Taxrate taxrate)
+        #region Taxrate...
+        public Taxrate[] GetTaxrates(bool showArchive = false)
         {
-            MsgServerResponce validationMessage = Validation(taxrate);
-
-            if (!validationMessage.IsSucceed)
+            using (var context = GetContext())
             {
-                return validationMessage;
-            }
-
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (showArchive)
                 {
-                    if (context.Taxrate.Contains(taxrate))
-                    {
-                        return new MsgServerResponce(false, "Данная налоговая ставка уже существует.");
-                    }
-
-                    context.Taxrate.Add(taxrate);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    return context.Taxrate.OrderBy(x => x.TaxPercent).ToArray();
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(false, ex.Message);
+
+                return context.Taxrate.OrderBy(x => x.TaxPercent)
+                    .Where(y => !y.IsArchive)
+                    .ToArray();
             }
         }
 
-        private MsgServerResponce Validation(Taxrate taxrate)
+        public void AddTaxrate(Taxrate tax)
         {
-            if (taxrate == null)
-            {
-                return new MsgServerResponce(false, "Ставка налога не может быть null.");
-            }
+            Validation(tax);
 
-            return new MsgServerResponce(true, $"Ставка налога в размере {taxrate.tax_percent}% успешно добавлена.");
-        }
-
-        public MsgServerResponce AddSourceOperation(SourceOperation sourceOperation)
-        {
-            MsgServerResponce validationMessage = Validation(sourceOperation);
-            
-            if (!validationMessage.IsSucceed)
+            using (var context = GetContext())
             {
-                return validationMessage;
-            }
-
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (context.Taxrate.FirstOrDefault(x => x.TaxPercent == tax.TaxPercent) != null)
                 {
-                    if (context.SourceOperation.Contains(sourceOperation))
-                    {
-                        return new MsgServerResponce(false, "Данный источник доходов/расходов уже существует.");
-                    }
-
-                    context.SourceOperation.Add(sourceOperation);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    throw new ArgumentException("Данная налоговая ставка уже добавлена.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(false, ex.Message);
+
+                context.Taxrate.Add(tax);
+                context.SaveChanges();
             }
         }
 
-        private MsgServerResponce Validation(SourceOperation sourceOperation)
+        public void RemoveTaxrate(int taxrateId)
         {
-            if (sourceOperation == null)
+            using (var context = GetContext())
             {
-                return new MsgServerResponce(false, "источник доходов/расходов не может быть null.");
-            }
+                Taxrate taxrate = context.Taxrate.FirstOrDefault(x => x.Id == taxrateId);
 
-            if (String.IsNullOrEmpty(sourceOperation.source_name))
-            {
-                return new MsgServerResponce(false, "Имя источника доходов/расходов не может быть пустым.");
-            }
-
-            return new MsgServerResponce(true, $"Источник доходов/расходов {sourceOperation.source_name} успешно добавлен.");
-        }
-
-        public MsgServerResponce AddSubsourceOperation(SubsourceOperation subsourceOperation)
-        {
-            MsgServerResponce validationMessage = Validation(subsourceOperation);
-
-            if (!validationMessage.IsSucceed)
-            {
-                return validationMessage;
-            }
-
-            try
-            {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                if (taxrate == null)
                 {
-                    if (context.SubsourceOperation.Contains(subsourceOperation))
-                    {
-                        return new MsgServerResponce(false, "Данная статья доходов/расходов уже существует.");
-                    }
-
-                    context.SubsourceOperation.Add(subsourceOperation);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    throw new ArgumentException("Данная налоговая ставка не найдена.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(false, ex.Message);
+
+                taxrate.IsArchive = true;
+                context.SaveChanges();
             }
         }
 
-        private MsgServerResponce Validation(SubsourceOperation subsourceOperation)
+        private void Validation(Taxrate tax)
         {
-            if (String.IsNullOrEmpty(subsourceOperation.subsource_name))
+            if (tax == null)
             {
-                return new MsgServerResponce(false, "Имя статьи расходов/доходов не может быть пустым.");
+                throw new ArgumentException("Налоговая ставка не может быть null.");
             }
-            if (subsourceOperation.SourceOperation == null) 
-            {
-                return new MsgServerResponce(false, "Выберите источник расходов/доходов."); 
-            }
-
-            return new MsgServerResponce(true, $"Статья расходов/доходов {subsourceOperation.subsource_name} добавлена");
         }
-        */
-        /*public MsgServerResponce AddOperation(Operation operation)
+        #endregion
+
+        #region Operations...
+        public Operation[] GetOperations()
         {
-            MsgServerResponce validationMessage = Validation(operation);
-
-            if (!validationMessage.IsSucceed)
+            using (var context = GetContext())
             {
-                return validationMessage;
+                return context.Operation.OrderByDescending(x => x.CreateDate).ToArray();
             }
+        }
 
-            try
+        public void AddOperation(Operation operation)
+        {
+            using (var context = GetContext())
             {
-                using (PlaybuhEntities context = new PlaybuhEntities())
+                context.Operation.Add(operation);
+                context.SaveChanges();
+            }
+        }
+
+        public void RemoveOperation(int operationId)
+        {
+            using (var context = GetContext())
+            {
+                Operation operation = context.Operation.FirstOrDefault(x => x.Id == operationId);
+
+                if (operation == null)
                 {
-                    if (context.SubsourceOperation.Contains(subsourceOperation))
-                    {
-                        return new MsgServerResponce(false, "Данная статья доходов/расходов уже существует.");
-                    }
-
-                    context.SubsourceOperation.Add(subsourceOperation);
-                    context.SaveChanges();
-
-                    return validationMessage;
+                    throw new ArgumentException("Данная операция не найдена.");
                 }
-            }
-            catch (Exception ex)
-            {
-                return new MsgServerResponce(false, ex.Message);
+
+                operation.IsArchive = true;
+                context.SaveChanges();
             }
         }
-
-        private MsgServerResponce Validation(SubsourceOperation subsourceOperation)
-        {
-            if (String.IsNullOrEmpty(subsourceOperation.subsource_name))
-            {
-                return new MsgServerResponce(false, "Имя статьи расходов/доходов не может быть пустым.");
-            }
-            if (subsourceOperation.SourceOperation == null)
-            {
-                return new MsgServerResponce(false, "Выберите источник расходов/доходов.");
-            }
-
-            return new MsgServerResponce(true, $"Статья расходов/доходов {subsourceOperation.subsource_name} добавлена");
-        }*/
+        #endregion
     }
 }

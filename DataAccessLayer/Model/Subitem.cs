@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Model
 {
     [Table("Subitem")]
-    public partial class Subitem
+    public class Subitem
     {
+        public Subitem() { }
+
         public Subitem(string subitemName, int itemId, string description = null)
         {
             SubitemName = subitemName;

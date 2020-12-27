@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Model
 {
@@ -25,7 +23,7 @@ namespace DataAccessLayer.Model
         [Column("is_revenue")]
         public bool IsRevenue { get; set; }
 
-        [Column("descriprion")]
+        [Column("description")]
         public string Description { get; set; }
 
         [Column("archive")]

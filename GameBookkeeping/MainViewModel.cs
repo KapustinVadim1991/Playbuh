@@ -33,8 +33,9 @@ namespace GameBookkeeping
         public MainViewModel()
         {
             var employees = new DatabaseAccess().GetEmployees();
+            var arc = new DatabaseAccess().GetEmployees(true);
 
-            foreach(Employee employee in employees)
+            foreach (Employee employee in employees)
             {
                 Employees.Add(employee);
             }

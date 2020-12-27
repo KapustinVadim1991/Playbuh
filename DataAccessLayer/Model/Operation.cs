@@ -17,7 +17,7 @@ namespace DataAccessLayer.Model
         public decimal Revenue { get; set; }
 
         [Column("earnings")]
-        public decimal? Earnings { get; set; }
+        public decimal Earnings { get; set; }
 
         [Column("create_date")]
         public DateTime? CreateDate { get; set; }
@@ -33,5 +33,8 @@ namespace DataAccessLayer.Model
 
         [Column("id_tax_rate")]
         public int TaxrateId { get; set; }
+
+        [Column("archive")]
+        public bool IsArchive { get; set; }
     }
 }

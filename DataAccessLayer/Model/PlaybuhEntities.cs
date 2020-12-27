@@ -12,16 +12,11 @@ namespace DataAccessLayer.Model
         {
         }
 
-        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }*/
-
-        //public DbSet<Contragent> Contragent { get; set; }
+        public DbSet<Contragent> Contragent { get; set; }
         public DbSet<Employee> Employee { get; set; }
-        /*public DbSet<Operation> Operation { get; set; }
+        public DbSet<Operation> Operation { get; set; }
         public DbSet<Item> Item { get; set; }
         public DbSet<Subitem> Subitem { get; set; }
-        public DbSet<Taxrate> Taxrate { get; set; }*/
+        public DbSet<Taxrate> Taxrate { get; set; }
     }
 }
