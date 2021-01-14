@@ -1,11 +1,8 @@
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\GameBookkeeping.exe.config
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\GameBookkeeping.exe
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\GameBookkeeping.pdb
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.dll
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\EntityFramework.dll
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\EntityFramework.SqlServer.dll
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.pdb
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\DataAccessLayer.dll.config
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\EntityFramework.xml
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\EntityFramework.SqlServer.xml
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\ru\EntityFramework.resources.dll
@@ -21,6 +18,4 @@ E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.csproj.CopyCo
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.exe
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.pdb
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.csprojAssemblyReference.cache
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.dll
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.pdb
-E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\nunit.framework.xml
+E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

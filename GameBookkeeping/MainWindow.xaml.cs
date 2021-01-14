@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DataAccessLayer;
+using GameBookkeeping.ServicePlaybuh;
 
 namespace GameBookkeeping
 {
@@ -29,7 +29,11 @@ namespace GameBookkeeping
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dbaccess = new DatabaseAccess();
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

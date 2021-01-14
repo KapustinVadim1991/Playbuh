@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using DataAccessLayer.Model;
 
@@ -12,7 +13,7 @@ namespace DataAccessLayer
         }
 
         #region Employee...
-        public Employee[] GetEmployees(bool showArchive = false)
+        public Employee[] GetEmployees(bool showArchive)
         {
             using (var context = GetContext())
             {
@@ -45,6 +46,22 @@ namespace DataAccessLayer
             }            
         }
 
+        public void UpdateEmployee(Employee employee)
+        {
+            Validation(employee);
+
+            using (var context = GetContext())
+            {
+                if (context.Employee.FirstOrDefault(x => x.Id == employee.Id) == null)
+                {
+                    throw new ArgumentNullException("Данный сотрудник не найден.");
+                }
+
+                context.Employee.AddOrUpdate(employee);
+                context.SaveChanges();
+            }
+        }
+
         public void RemoveEmployee(int employeeId)
         {
             using (var context = GetContext())
@@ -53,7 +70,7 @@ namespace DataAccessLayer
 
                 if (employee == null)
                 {
-                    throw new ArgumentException("Данный сотрудник не найден.");
+                    throw new ArgumentNullException("Данный сотрудник не найден.");
                 }
 
                 employee.IsArchive = true;
@@ -78,7 +95,7 @@ namespace DataAccessLayer
         #endregion
 
         #region Contragent...
-        public Contragent[] GetContragents(bool showArchive = false)
+        public Contragent[] GetContragents(bool showArchive)
         {
             using (var context = GetContext())
             {
@@ -117,7 +134,7 @@ namespace DataAccessLayer
 
                 if (contragent == null)
                 {
-                    throw new ArgumentException("Данный контрагент не найден.");
+                    throw new ArgumentNullException("Данный контрагент не найден.");
                 }
 
                 contragent.IsArchive = true;
@@ -137,10 +154,10 @@ namespace DataAccessLayer
                 throw new ArgumentException("Наименование контрагента не может быть пустым.");
             }
         }
-        #endregion
+        #endregion Contragent...
 
         #region Item...
-        public Item[] GetItems(bool showArchive = false)
+        public Item[] GetItems(bool showArchive)
         {
             using (var context = GetContext())
             {
@@ -181,7 +198,7 @@ namespace DataAccessLayer
 
                 if (item == null)
                 {
-                    throw new ArgumentException("Данная статья не найдена.");
+                    throw new ArgumentNullException("Данная статья не найдена.");
                 }
 
                 item.IsArchive = true;
@@ -201,10 +218,10 @@ namespace DataAccessLayer
                 throw new ArgumentException("Наименование статьи не может быть пустым.");
             }
         }
-        #endregion
+        #endregion Item...
 
         #region Subitem...
-        public Subitem[] GetSubitems(bool showArchive = false)
+        public Subitem[] GetSubitems(bool showArchive)
         {
             using (var context = GetContext())
             {
@@ -245,7 +262,7 @@ namespace DataAccessLayer
 
                 if (subitem == null)
                 {
-                    throw new ArgumentException("Данная подстатья не найдена.");
+                    throw new ArgumentNullException("Данная подстатья не найдена.");
                 }
 
                 subitem.IsArchive = true;
@@ -265,10 +282,10 @@ namespace DataAccessLayer
                 throw new ArgumentException("Наименование подстатьи не может быть пустым.");
             }
         }
-        #endregion
-        
+        #endregion Subitem...
+
         #region Taxrate...
-        public Taxrate[] GetTaxrates(bool showArchive = false)
+        public Taxrate[] GetTaxrates(bool showArchive)
         {
             using (var context = GetContext())
             {
@@ -307,7 +324,7 @@ namespace DataAccessLayer
 
                 if (taxrate == null)
                 {
-                    throw new ArgumentException("Данная налоговая ставка не найдена.");
+                    throw new ArgumentNullException("Данная налоговая ставка не найдена.");
                 }
 
                 taxrate.IsArchive = true;
@@ -322,14 +339,21 @@ namespace DataAccessLayer
                 throw new ArgumentException("Налоговая ставка не может быть null.");
             }
         }
-        #endregion
+        #endregion Taxrate...
 
         #region Operations...
-        public Operation[] GetOperations()
+        public Operation[] GetOperations(bool showArchive)
         {
             using (var context = GetContext())
             {
-                return context.Operation.OrderByDescending(x => x.CreateDate).ToArray();
+                if (showArchive)
+                {
+                    return context.Operation.OrderByDescending(x => x.CreateDate).ToArray();
+                }
+
+                return context.Operation.OrderByDescending(x => x.CreateDate)
+                    .Where(y => !y.IsArchive)
+                    .ToArray();
             }
         }
 
@@ -350,13 +374,13 @@ namespace DataAccessLayer
 
                 if (operation == null)
                 {
-                    throw new ArgumentException("Данная операция не найдена.");
+                    throw new ArgumentNullException("Данная операция не найдена.");
                 }
 
                 operation.IsArchive = true;
                 context.SaveChanges();
             }
         }
-        #endregion
+        #endregion Operations...
     }
 }

@@ -12,7 +12,7 @@ namespace DataAccessLayer.Model
     {
         public Subitem() { }
 
-        public Subitem(string subitemName, int itemId, string description = null)
+        public Subitem(string subitemName, int itemId, string description)
         {
             SubitemName = subitemName;
             Description = description;

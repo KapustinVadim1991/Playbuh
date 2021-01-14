@@ -7,7 +7,7 @@ namespace DataAccessLayer.Model
     {
         public Item() { }
 
-        public Item(string itemName, bool isRevenue, string description = null)
+        public Item(string itemName, bool isRevenue, string description)
         {            
             ItemName = itemName;
             IsRevenue = isRevenue;

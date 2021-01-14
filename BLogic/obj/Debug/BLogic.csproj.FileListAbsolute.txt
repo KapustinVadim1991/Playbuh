@@ -1,0 +1,15 @@
+E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.dll
+E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.pdb
+E:\GitRepository\Playbuh\BLogic\bin\Debug\DataAccessLayer.dll
+E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.dll
+E:\GitRepository\Playbuh\BLogic\bin\Debug\EntityFramework.dll
+E:\GitRepository\Playbuh\BLogic\bin\Debug\DataAccessLayer.pdb
+E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.pdb
+E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.xml
+E:\GitRepository\Playbuh\BLogic\bin\Debug\EntityFramework.xml
+E:\GitRepository\Playbuh\BLogic\bin\Debug\ru\EntityFramework.resources.dll
+E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.csprojAssemblyReference.cache
+E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.csproj.CopyComplete
+E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.dll
+E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.pdb
+E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.dll.config

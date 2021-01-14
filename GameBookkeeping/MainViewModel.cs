@@ -1,26 +1,26 @@
-﻿using DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using DataAccessLayer.Model;
+using System.ServiceModel;
+using System.Windows.Documents;
+using GameBookkeeping.ServicePlaybuh;
 
 namespace GameBookkeeping
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private Employee _selectedEmployee;
+        private Employee1 _selectedEmployee;
 
-        public ObservableCollection<Employee> Employees { get; private set; } = new ObservableCollection<Employee>();
+        public ObservableCollection<Employee1> Employees { get; private set; } = new ObservableCollection<Employee1>();
 
-        public Employee SelectedEmployee
+        public Employee1 SelectedEmployee
         {
-            get { return _selectedEmployee; }
+            get
+            {
+                return _selectedEmployee;
+            }
             set
             {
                 _selectedEmployee = value;
@@ -32,17 +32,27 @@ namespace GameBookkeeping
 
         public MainViewModel()
         {
-            var employees = new DatabaseAccess().GetEmployees();
-            var arc = new DatabaseAccess().GetEmployees(true);
+            var service = new ServicePlaybuh.ServiceNetworkClient();
+
+            Employee[] employees = service.GetEmployees(false);
 
             foreach (Employee employee in employees)
             {
-                Employees.Add(employee);
+                var str =  employee.ToString();
+                Employees.Add(new Employee1
+                    {
+                        Id = employee.Id,
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        MiddleName = employee.MiddleName,
+                        IsArchive = employee.IsArchive,
+                        Description = employee.Description
+                    });
             }
 
-            if(employees.Length != 0)
+            if (Employees.Count != 0)
             {
-                SelectedEmployee = employees[0];
+                SelectedEmployee = Employees[0];
             }
         }
 

@@ -1,4 +1,3 @@
-E:\GitRepository\Playbuh\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
 E:\GitRepository\Playbuh\DataAccessLayer\bin\Debug\DataAccessLayer.dll
 E:\GitRepository\Playbuh\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 E:\GitRepository\Playbuh\DataAccessLayer\bin\Debug\EntityFramework.dll

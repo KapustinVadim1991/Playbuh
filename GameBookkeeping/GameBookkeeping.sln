@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBookkeeping", "GameBook
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{0C1AEC41-022D-4C3A-891F-4503D7537856}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLogic", "..\BLogic\BLogic.csproj", "{A0FBEF49-910C-4565-9FD7-A9D2E0902AF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerHost", "..\ServerHost\ServerHost.csproj", "{970E85C0-248A-4FD8-9EE5-2F17CBB5637B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0C1AEC41-022D-4C3A-891F-4503D7537856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1AEC41-022D-4C3A-891F-4503D7537856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1AEC41-022D-4C3A-891F-4503D7537856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FBEF49-910C-4565-9FD7-A9D2E0902AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FBEF49-910C-4565-9FD7-A9D2E0902AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FBEF49-910C-4565-9FD7-A9D2E0902AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FBEF49-910C-4565-9FD7-A9D2E0902AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970E85C0-248A-4FD8-9EE5-2F17CBB5637B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970E85C0-248A-4FD8-9EE5-2F17CBB5637B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970E85C0-248A-4FD8-9EE5-2F17CBB5637B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970E85C0-248A-4FD8-9EE5-2F17CBB5637B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

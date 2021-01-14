@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBookkeeping"
-        xmlns:ent="clr-namespace:DataAccessLayer;assembly=DataAccessLayer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -15,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Добавить сотрудника" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
+            <Button Content="Добавить сотрудника" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30" Click="Button_Click_1"/>
             <Button Content="Добавить контрагента" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
             <Button Content="Добавить операцию" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
         </StackPanel>

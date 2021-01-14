@@ -7,7 +7,7 @@ namespace DataAccessLayer.Model
     {
         public Taxrate() { }
 
-        public Taxrate(int taxPercent, string description = null)
+        public Taxrate(int taxPercent, string description)
         {
             TaxPercent = taxPercent;
             Description = description;
