@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:GameBookkeeping"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resourses/TabItemStyle.xaml"/>
+                <ResourceDictionary Source="Resourses/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resourses/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="Resourses/DatePickerStyle.xaml"/>
+                <ResourceDictionary Source="Resourses/ComboBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+         </ResourceDictionary>
     </Application.Resources>
 </Application>

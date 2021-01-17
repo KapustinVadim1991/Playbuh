@@ -4,25 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBookkeeping"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Создание операций расходов/приходов" Height="384" Width="718">
+
+    <Window.Resources>
+        <Style TargetType="TabItem" BasedOn="{StaticResource BlueTabItem}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource BlueButton}"/>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource RightAlignment}"/>
+        <Style TargetType="DatePicker" BasedOn="{StaticResource DatePickerDefault}"/>
+        <!--<Style TargetType="ComboBox" BasedOn="{StaticResource DefaultCombobox}"/>-->
+    </Window.Resources>
+
+    <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="100"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Добавить сотрудника" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30" Click="Button_Click_1"/>
-            <Button Content="Добавить контрагента" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
-            <Button Content="Добавить операцию" VerticalAlignment="Center" Margin="5,5,5,5" Padding="5,5" MinWidth="110" MinHeight="30"/>
-        </StackPanel>
+        <TabControl BorderBrush="Black" BorderThickness="0" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Операции" MinWidth="200">
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="500"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1">
-            <ComboBox MinWidth="200" MaxWidth="500" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
-            </ComboBox>
-        </StackPanel>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Right" Padding="5">
+                        Создание новой операции
+                    </TextBlock>
+
+                    <Grid Grid.Row="1" ShowGridLines="True" Margin="20, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0">Дата операции</TextBlock>
+                        <TextBlock Grid.Row="1">Подстатья</TextBlock>
+                        <TextBlock Grid.Row="2">Доход/Расход</TextBlock>
+                        <TextBlock Grid.Row="3">Налоговая ставка</TextBlock>
+                        <TextBlock Grid.Row="4">Прибыль</TextBlock>
+                        <TextBlock Grid.Row="5">Сотрудник</TextBlock>
+                        <TextBlock Grid.Row="6">Контрагент</TextBlock>
+
+                        <DatePicker Grid.Row="0" Grid.Column="1" SelectedDate="{x:Static sys:DateTime.Now}" Margin="0"/>
+                        <ComboBox  Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center"
+                                   ItemsSource="{Binding Path=Employees}"
+                                   SelectedItem="{Binding Path=SelectedEmployee}">
+                        </ComboBox>
+                        <TextBlock  Grid.Row="2" Grid.Column="1">Доход/Расход</TextBlock>
+                        <TextBlock  Grid.Row="3" Grid.Column="1">Налоговая ставка</TextBlock>
+                        <TextBlock  Grid.Row="4" Grid.Column="1">Прибыль</TextBlock>
+                        <TextBlock  Grid.Row="5" Grid.Column="1">Сотрудник</TextBlock>
+                        <TextBlock  Grid.Row="6" Grid.Column="1">Контрагент</TextBlock>
+
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+                        <Button Margin="5">Добавить</Button>
+                        <Button Margin="5">Очистить</Button>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Сотрудники">
+                <Grid>
+                    <TextBlock>Сотрудники будут здесь</TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Контрагенты">
+                <Grid>
+                    <TextBlock>Контрагенты будут здесь</TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Статьи">
+                <Grid>
+                    <TextBlock>Статьи будут здесь</TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Подстатьи">
+                <Grid>
+                    <TextBlock>Статьи будут здесь</TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Налоги">
+                <Grid>
+                    <TextBlock>Налоговые ставки будут здесь</TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
 
     </Grid>
 </Window>

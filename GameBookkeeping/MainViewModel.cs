@@ -13,14 +13,11 @@ namespace GameBookkeeping
     {
         private Employee1 _selectedEmployee;
 
-        public ObservableCollection<Employee1> Employees { get; private set; } = new ObservableCollection<Employee1>();
+        public List<Employee1> Employees { get; private set; } = new List<Employee1>();
 
         public Employee1 SelectedEmployee
         {
-            get
-            {
-                return _selectedEmployee;
-            }
+            get => _selectedEmployee;
             set
             {
                 _selectedEmployee = value;
@@ -35,6 +32,7 @@ namespace GameBookkeeping
             var service = new ServicePlaybuh.ServiceNetworkClient();
 
             Employee[] employees = service.GetEmployees(false);
+
 
             foreach (Employee employee in employees)
             {
@@ -58,8 +56,7 @@ namespace GameBookkeeping
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

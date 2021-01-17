@@ -8,7 +8,7 @@ namespace DataAccessLayer.Model
     {
         public Employee() { }
 
-        public Employee(string firstName, string lastName, string middleName, string description = null)
+        public Employee(string firstName, string lastName, string middleName, string description)
         {
             FirstName = firstName;
             LastName = lastName;

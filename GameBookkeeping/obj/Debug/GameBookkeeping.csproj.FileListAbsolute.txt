@@ -19,3 +19,9 @@ E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.exe
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.pdb
 E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\GameBookkeeping.csprojAssemblyReference.cache
 E:\GitRepository\Playbuh\GameBookkeeping\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\Resourses\TabItemStyle.baml
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\App.baml
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\Resourses\ButtonStyle.baml
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\Resourses\TextBlockStyle.baml
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\Resourses\DatePickerStyle.baml
+E:\GitRepository\Playbuh\GameBookkeeping\obj\Debug\Resourses\ComboBoxStyle.baml
