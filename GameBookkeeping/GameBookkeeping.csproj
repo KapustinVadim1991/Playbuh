@@ -69,7 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Employee1.cs" />
     <Compile Include="MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,11 +82,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resourses\DatePickerStyle.xaml">
+    <Page Include="Resourses\ComboBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resourses\ComboBoxStyle.xaml">
+    <Page Include="Resourses\DatePickerStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -122,9 +121,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ServicePlaybuh\GameBookkeeping.ServicePlaybuh.Employee.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="Connected Services\ServicePlaybuh\BuisnessLogic.wsdl" />
     <None Include="Connected Services\ServicePlaybuh\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -134,8 +131,14 @@
     <None Include="Connected Services\ServicePlaybuh\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServicePlaybuh\ServiceMsg.wsdl" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BLogic.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Contragent.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Item.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Operation.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Subitem.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Model.Taxrate.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -149,6 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLogic\BLogic.csproj">
+      <Project>{a0fbef49-910c-4565-9fd7-a9d2e0902af2}</Project>
+      <Name>BLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServicePlaybuh\" />
@@ -168,6 +177,5 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

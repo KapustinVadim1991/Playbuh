@@ -16,21 +16,12 @@ namespace ServerHost
 
                     Console.WriteLine($"Хост запущен");
 
-                    //BuisnessLogic buisnessLogic = new BuisnessLogic();
-
-                    //var b = buisnessLogic.GetEmployees();
-
-                    //foreach (var e in b)
-                    //{
-                    //    Console.WriteLine(e.FirstName);
-                    //}
-
                     Console.ReadLine();
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message+e.StackTrace+e.InnerException?.Message);
             }
 
             Console.ReadLine();

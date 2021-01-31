@@ -1,16 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="DefaultCombobox" TargetType="{x:Type ComboBox}">
-        <Setter Property="FontSize" Value="16" />
+    <Style x:Key="RzdBlueComboBoxItem" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+    </Style>
+
+    <ControlTemplate x:Key="RzdComboBoxToggleButtonTemplate" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Первый столбец кнопки пустой, на него выводится текст-->
+            <Border Grid.Column="0"
+                    SnapsToDevicePixels="True"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding Background}"
+                    BorderThickness="0,0,1,0" />
+            <!--Второй столбец фон со стрелкой-->
+            <Border Grid.Column="1" SnapsToDevicePixels="True" Margin="1" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding Background}" BorderThickness="0,0,1,0" />
+            <Path Grid.Column="1" Data="M 0 0 L 13 15 L 26 0 Z" Fill="{TemplateBinding Foreground}"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="DefaultComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="Height" Value="35"></Setter>
+        <Setter Property="FontSize" Value="10" />
         <Setter Property="FontFamily" Value="Bahnschrift" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
-        <Setter Property="TextElement.Foreground" Value="Green" />
-        <Setter Property="Foreground" Value="DarkBlue" />
+        <Setter Property="TextElement.Foreground" Value="White" />
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#FF007FB1" />
-        <Setter Property="BorderBrush" Value="DarkBlue" />
+        <Setter Property="BorderBrush" Value="#FF007FB1" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -22,12 +51,20 @@
                             <!--Это отступ от края на ширину стрелки-->
                             <ColumnDefinition Width="40" />
                         </Grid.ColumnDefinitions>
+                        <ToggleButton
+                            Grid.Column="0" Grid.ColumnSpan="2"
+                            ClickMode="Press"
+                            Focusable="False"
+                            Background="{TemplateBinding Background}"
+                            Foreground="{TemplateBinding Foreground}"
+                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Template="{StaticResource RzdComboBoxToggleButtonTemplate}">
+                        </ToggleButton>
                         <ContentPresenter
                             Grid.Column="0"
                             IsHitTestVisible="False"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Margin="5"
                             Content="{TemplateBinding ComboBox.SelectionBoxItem}"
                             ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}">
@@ -41,13 +78,13 @@
                                IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}">
                             <Border
                                 BorderThickness="1"
-                                BorderBrush="DarkBlue"
+                                BorderBrush="Black"
                                 MinWidth="{TemplateBinding FrameworkElement.ActualWidth}">
                                 <Grid Name="DropDown"
                                       SnapsToDevicePixels="True"
                                       MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
                                     <Border Name="DropDownBorder"
-                                            Background="DarkBlue"
+                                            Background="White"
                                             CornerRadius="0" />
                                     <ScrollViewer SnapsToDevicePixels="True">
                                         <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
@@ -60,10 +97,6 @@
                         <Trigger Property="HasItems" Value="false">
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
                         </Trigger>
-                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
-                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0" />
-                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0" />
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -73,28 +106,23 @@
                 <Style TargetType="{x:Type ComboBoxItem}">
                     <Setter Property="Background" Value="White" />
                     <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="Margin" Value="0" />
-                    <Setter Property="Padding" Value="5" />
                     <Setter Property="HorizontalContentAlignment" Value="Left" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                                 <StackPanel x:Name="Bd"
-                                            Background="{TemplateBinding Background}"
-                                            Margin="0">
+                                            Background="{TemplateBinding Background}">
                                     <ContentPresenter
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        Margin="{TemplateBinding Padding}"
                                         RecognizesAccessKey="True"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </StackPanel>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsHighlighted" Value="True">
                                         <Setter TargetName="Bd" Property="Background"
                                                 Value="Gray" />
                                         <Setter Property="Foreground"
-                                                Value="DarkGray" />
+                                                Value="White" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -105,7 +133,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Foreground" Value="LightGray" />
+                <Setter Property="Foreground" Value="White" />
                 <Setter Property="Background" Value="Gray" />
             </Trigger>
         </Style.Triggers>

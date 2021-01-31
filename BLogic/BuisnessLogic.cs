@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Configuration;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccessLayer;
-using DataAccessLayer.Model;
+using BLogic.Model;
 
 namespace BLogic
 {
@@ -16,21 +12,31 @@ namespace BLogic
         public BuisnessLogic()
         {
             dbAccess = new DatabaseAccess();
+            
         }
 
         #region Employee...
 
         public Employee[] GetEmployees(bool showArchive)
         {
-            return dbAccess.GetEmployees(showArchive);
+            DataAccessLayer.Model.Employee[] employees = dbAccess.GetEmployees(showArchive);
+
+            List<Employee> result = new List<Employee>();
+
+            foreach (var employee in employees)
+            {
+                result.Add(new Employee(employee));
+            }
+
+            return result.ToArray();
         }
 
-        public void AddEmployee(string firstName, string lastName, string middleName, string description = null)
-        {
-            dbAccess.AddEmployee(new Employee(firstName, lastName, middleName, description));
-        }
+        //public void AddEmployee(string firstName, string lastName, string middleName, string description = null)
+        //{
+        //    dbAccess.AddEmployee(new Employee(firstName, lastName, middleName, description));
+        //}
 
-        public void RemoveEmployee(int employeeId)
+        /*public void RemoveEmployee(int employeeId)
         {
             dbAccess.RemoveEmployee(employeeId);
         }
@@ -148,7 +154,7 @@ namespace BLogic
         public void RemoveOperation(int operationId)
         {
             dbAccess.RemoveOperation(operationId);
-        }
+        }*/
 
         #endregion Operations...
     }

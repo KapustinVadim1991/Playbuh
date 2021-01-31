@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.ServiceModel;
-using System.Windows.Documents;
+using System.Windows;
 using GameBookkeeping.ServicePlaybuh;
+using Employee = BLogic.Model.Employee;
 
 namespace GameBookkeeping
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private Employee1 _selectedEmployee;
+        private Employee _selectedEmployee;
 
-        public List<Employee1> Employees { get; private set; } = new List<Employee1>();
+        public Employee[] Employees { get; set; }
 
-        public Employee1 SelectedEmployee
+        public Employee SelectedEmployee
         {
             get => _selectedEmployee;
             set
@@ -29,34 +28,43 @@ namespace GameBookkeeping
 
         public MainViewModel()
         {
-            var service = new ServicePlaybuh.ServiceNetworkClient();
-
-            Employee[] employees = service.GetEmployees(false);
+            Initialize();
 
 
-            foreach (Employee employee in employees)
+
+        }
+
+        private void Initialize()
+        {
+            try
             {
-                var str =  employee.ToString();
-                Employees.Add(new Employee1
-                    {
-                        Id = employee.Id,
-                        FirstName = employee.FirstName,
-                        LastName = employee.LastName,
-                        MiddleName = employee.MiddleName,
-                        IsArchive = employee.IsArchive,
-                        Description = employee.Description
-                    });
+                var service = new ServiceNetworkClient();
+
+                LoadEmployees(service);
+                
+
             }
-
-            if (Employees.Count != 0)
+            catch (Exception e)
             {
-                SelectedEmployee = Employees[0];
+                MessageBox.Show($"{e.Message}\n{e.InnerException}\n{e.StackTrace}");
             }
         }
+
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        private void LoadEmployees(ServiceNetworkClient service)
+        {
+            Employees = service.GetEmployees(false);
+
+
+            if (Employees.Length != 0)
+            {
+                SelectedEmployee = Employees[0];
+            }
         }
     }
 }

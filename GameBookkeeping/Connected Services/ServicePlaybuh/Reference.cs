@@ -9,162 +9,17 @@
 //------------------------------------------------------------------------------
 
 namespace GameBookkeeping.ServicePlaybuh {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Employee", Namespace="http://schemas.datacontract.org/2004/07/DataAccessLayer.Model")]
-    [System.SerializableAttribute()]
-    public partial class Employee : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsArchiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MiddleNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsArchive {
-            get {
-                return this.IsArchiveField;
-            }
-            set {
-                if ((this.IsArchiveField.Equals(value) != true)) {
-                    this.IsArchiveField = value;
-                    this.RaisePropertyChanged("IsArchive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MiddleName {
-            get {
-                return this.MiddleNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
-                    this.MiddleNameField = value;
-                    this.RaisePropertyChanged("MiddleName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicePlaybuh.IServiceNetwork")]
     public interface IServiceNetwork {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/GetEmployees", ReplyAction="http://tempuri.org/IServiceNetwork/GetEmployeesResponse")]
-        GameBookkeeping.ServicePlaybuh.Employee[] GetEmployees(bool showArchive);
+        BLogic.Model.Employee[] GetEmployees(bool showArchive);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/GetEmployees", ReplyAction="http://tempuri.org/IServiceNetwork/GetEmployeesResponse")]
-        System.Threading.Tasks.Task<GameBookkeeping.ServicePlaybuh.Employee[]> GetEmployeesAsync(bool showArchive);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/AddEmployeeResponse")]
-        void AddEmployee(string firstName, string lastName, string middleName, string description);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/AddEmployeeResponse")]
-        System.Threading.Tasks.Task AddEmployeeAsync(string firstName, string lastName, string middleName, string description);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveEmployeeResponse")]
-        void RemoveEmployee(int employeeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveEmployeeResponse")]
-        System.Threading.Tasks.Task RemoveEmployeeAsync(int employeeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse")]
-        void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName, string description);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse")]
-        System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description);
+        System.Threading.Tasks.Task<BLogic.Model.Employee[]> GetEmployeesAsync(bool showArchive);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,36 +49,12 @@ namespace GameBookkeeping.ServicePlaybuh {
                 base(binding, remoteAddress) {
         }
         
-        public GameBookkeeping.ServicePlaybuh.Employee[] GetEmployees(bool showArchive) {
+        public BLogic.Model.Employee[] GetEmployees(bool showArchive) {
             return base.Channel.GetEmployees(showArchive);
         }
         
-        public System.Threading.Tasks.Task<GameBookkeeping.ServicePlaybuh.Employee[]> GetEmployeesAsync(bool showArchive) {
+        public System.Threading.Tasks.Task<BLogic.Model.Employee[]> GetEmployeesAsync(bool showArchive) {
             return base.Channel.GetEmployeesAsync(showArchive);
-        }
-        
-        public void AddEmployee(string firstName, string lastName, string middleName, string description) {
-            base.Channel.AddEmployee(firstName, lastName, middleName, description);
-        }
-        
-        public System.Threading.Tasks.Task AddEmployeeAsync(string firstName, string lastName, string middleName, string description) {
-            return base.Channel.AddEmployeeAsync(firstName, lastName, middleName, description);
-        }
-        
-        public void RemoveEmployee(int employeeId) {
-            base.Channel.RemoveEmployee(employeeId);
-        }
-        
-        public System.Threading.Tasks.Task RemoveEmployeeAsync(int employeeId) {
-            return base.Channel.RemoveEmployeeAsync(employeeId);
-        }
-        
-        public void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName, string description) {
-            base.Channel.ChangeEmployeeFullName(employeeId, firstName, lastName, middleName, description);
-        }
-        
-        public System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description) {
-            return base.Channel.ChangeEmployeeFullNameAsync(employeeId, firstName, lastName, middleName, description);
         }
     }
 }

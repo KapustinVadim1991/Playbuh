@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
-using DataAccessLayer.Model;
+using BLogic.Model;
 
 namespace BLogic
 {
@@ -10,7 +11,7 @@ namespace BLogic
         [OperationContract]
         Employee[] GetEmployees(bool showArchive);
 
-        [OperationContract]
+        /*[OperationContract]
         void AddEmployee(string firstName, string lastName, string middleName, string description = null);
 
         [OperationContract]
@@ -32,7 +33,7 @@ namespace BLogic
 
 
         [OperationContract]
-        Item[] GetItems(bool showArchive)
+        Item[] GetItems(bool showArchive);
 
         [OperationContract]
         void AddItem(string itemName, bool isRevenue, string description);
@@ -68,6 +69,6 @@ namespace BLogic
         void AddOperation(DateTime operationDate, int contragentId, int employeeId, int subitemId, int taxrateId, decimal revenue, decimal earnings);
 
         [OperationContract]
-        void RemoveOperation(int operationId);
+        void RemoveOperation(int operationId);*/
     }
 }

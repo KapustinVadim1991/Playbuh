@@ -14,7 +14,7 @@ namespace DataAccessLayer.Tests
 
             try
             {
-                dal.AddEmployee(new Employee("Вадим", "Капустин", "Викторович"));
+                dal.AddEmployee(new Employee("Вадим", "Капустин", "Викторович", null));
             }
             catch(ArgumentException ex)
             {
@@ -23,7 +23,7 @@ namespace DataAccessLayer.Tests
 
             try
             {
-                dal.AddEmployee(new Employee("", "Капустин", "Викторович"));
+                dal.AddEmployee(new Employee("", "Капустин", "Викторович", null));
             }
             catch (ArgumentException ex)
             {
@@ -125,7 +125,7 @@ namespace DataAccessLayer.Tests
 
             try
             {
-                dal.AddItem(new Item("", true));
+                dal.AddItem(new Item("", true, null));
             }
             catch (ArgumentException ex)
             {
@@ -176,7 +176,7 @@ namespace DataAccessLayer.Tests
 
             try
             {
-                dal.AddSubitem(new Subitem("", 1));
+                dal.AddSubitem(new Subitem("", 1, null));
             }
             catch (ArgumentException ex)
             {
@@ -218,7 +218,7 @@ namespace DataAccessLayer.Tests
 
             try
             {
-                dal.AddTaxrate(new Taxrate(0));
+                dal.AddTaxrate(new Taxrate(0, null));
             }
             catch (ArgumentException ex)
             {
