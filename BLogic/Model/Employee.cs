@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using System.ComponentModel.DataAnnotations;
 
 namespace BLogic.Model
 {
@@ -16,16 +17,22 @@ namespace BLogic.Model
             IsArchive = employee.IsArchive;
         }
 
+        [Display(AutoGenerateField = false)]
         public int Id { get; set; }
 
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
+        [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
 
+        [Display(Name = "Описание")]
         public string Description { get; set; }
 
+        [Display(AutoGenerateField = false)]
         public bool IsArchive { get; set; }
         public override string ToString()
         {

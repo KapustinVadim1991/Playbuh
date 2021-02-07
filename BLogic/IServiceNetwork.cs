@@ -11,8 +11,8 @@ namespace BLogic
         [OperationContract]
         Employee[] GetEmployees(bool showArchive);
 
-        /*[OperationContract]
-        void AddEmployee(string firstName, string lastName, string middleName, string description = null);
+        [OperationContract]
+        int AddEmployee(string firstName, string lastName, string middleName, string description = null);
 
         [OperationContract]
         void RemoveEmployee(int employeeId);
@@ -21,7 +21,7 @@ namespace BLogic
         void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName,
             string description = null);
 
-
+        /*
         [OperationContract]
         Contragent[] GetContragents(bool showArchive);
 

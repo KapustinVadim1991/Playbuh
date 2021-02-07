@@ -42,7 +42,9 @@
     <Reference Include="DevExpress.Xpf.Grid.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Ribbon.v20.2" />
     <Reference Include="DevExpress.Printing.v20.2.Core" />
-    <Reference Include="DevExpress.Images.v20.2" />
+    <Reference Include="DevExpress.Images.v20.2">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Mvvm.v20.2" />
     <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v20.2" />
     <Reference Include="System" />
@@ -116,6 +118,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\PlaybuhService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PlaybuhService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\BLogic.Model.Employee.datasource" />

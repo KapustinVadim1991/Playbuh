@@ -28,7 +28,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void AddEmployee(Employee employee)
+        public int AddEmployee(Employee employee)
         {
             Validation(employee);
 
@@ -43,6 +43,7 @@ namespace DataAccessLayer
 
                 context.Employee.Add(employee);
                 context.SaveChanges();
+                return context.Employee.Max(x => x.Id);
             }            
         }
 

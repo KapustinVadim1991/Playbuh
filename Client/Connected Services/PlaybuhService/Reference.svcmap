@@ -23,10 +23,11 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="75d28caf-a2e9-437f-a5a4-9d73776adcb1" SourceId="1" SourceUrl="http://localhost:8301/?disco" />
+    <MetadataFile FileName="BuisnessLogic.wsdl" MetadataType="Wsdl" ID="e0d65ef0-e628-4d19-9db7-7af3bc0f2ff1" SourceId="1" SourceUrl="http://localhost:8301/?wsdl" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="8298c1b3-da1e-44ef-a543-ee2623220877" SourceId="1" SourceUrl="http://localhost:8301/?xsd=xsd0" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="8c6a9d95-4bb7-4d11-8d93-c7e2a720563c" SourceId="1" SourceUrl="http://localhost:8301/?xsd=xsd2" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="c2b8e957-a616-4575-8ddd-6df3f9f8b60f" SourceId="1" SourceUrl="http://localhost:8301/?xsd=xsd1" />
-    <MetadataFile FileName="BuisnessLogic.wsdl" MetadataType="Wsdl" ID="e0d65ef0-e628-4d19-9db7-7af3bc0f2ff1" SourceId="1" SourceUrl="http://localhost:8301/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="f6c548c7-7272-4464-81d4-5178a1dfd95a" SourceId="1" SourceUrl="http://localhost:8301/?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -34,6 +34,7 @@
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BLogic.Model" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DevExpress.Mvvm" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceNetwork_GetEmployees_InputMessage">
@@ -42,10 +43,40 @@
   <wsdl:message name="IServiceNetwork_GetEmployees_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceNetwork_AddEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_AddEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_RemoveEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_RemoveEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_ChangeEmployeeFullName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeEmployeeFullName" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_ChangeEmployeeFullName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeEmployeeFullNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceNetwork">
     <wsdl:operation name="GetEmployees">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/GetEmployees" message="tns:IServiceNetwork_GetEmployees_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/GetEmployeesResponse" message="tns:IServiceNetwork_GetEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/AddEmployee" message="tns:IServiceNetwork_AddEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/AddEmployeeResponse" message="tns:IServiceNetwork_AddEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/RemoveEmployee" message="tns:IServiceNetwork_RemoveEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/RemoveEmployeeResponse" message="tns:IServiceNetwork_RemoveEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeEmployeeFullName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName" message="tns:IServiceNetwork_ChangeEmployeeFullName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse" message="tns:IServiceNetwork_ChangeEmployeeFullName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IServiceNetwork" type="tns:IServiceNetwork">
@@ -53,6 +84,33 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GetEmployees">
       <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/GetEmployees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/AddEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEmployee">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/RemoveEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeEmployeeFullName">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

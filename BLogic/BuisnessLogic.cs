@@ -31,19 +31,19 @@ namespace BLogic
             return result.ToArray();
         }
 
-        //public void AddEmployee(string firstName, string lastName, string middleName, string description = null)
-        //{
-        //    dbAccess.AddEmployee(new Employee(firstName, lastName, middleName, description));
-        //}
+        public int AddEmployee(string firstName, string lastName, string middleName, string description = null)
+        {
+            return dbAccess.AddEmployee(new DataAccessLayer.Model.Employee(firstName, lastName, middleName, description));
+        }
 
-        /*public void RemoveEmployee(int employeeId)
+        public void RemoveEmployee(int employeeId)
         {
             dbAccess.RemoveEmployee(employeeId);
         }
 
         public void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName, string description = null)
         {
-            dbAccess.UpdateEmployee(new Employee
+            dbAccess.UpdateEmployee(new DataAccessLayer.Model.Employee
             {
                 Id = employeeId,
                 LastName = lastName,
@@ -54,7 +54,7 @@ namespace BLogic
         }
 
         #endregion Employee...
-
+        /*
         #region Contragent...
 
         public Contragent[] GetContragents(bool showArchive)
@@ -154,8 +154,8 @@ namespace BLogic
         public void RemoveOperation(int operationId)
         {
             dbAccess.RemoveOperation(operationId);
-        }*/
+        }
 
-        #endregion Operations...
+        #endregion Operations...*/
     }
 }

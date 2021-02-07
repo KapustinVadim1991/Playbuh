@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.ServiceModel;
 using BLogic;
 
@@ -23,7 +24,6 @@ namespace ServerHost
             {
                 Console.WriteLine(e.Message+e.StackTrace+e.InnerException?.Message);
             }
-
             Console.ReadLine();
         }
     }

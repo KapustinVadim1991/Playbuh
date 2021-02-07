@@ -17,3 +17,5 @@ E:\GitRepository\Playbuh\ServerHost\obj\Debug\ServerHost.csprojAssemblyReference
 E:\GitRepository\Playbuh\ServerHost\obj\Debug\ServerHost.csproj.CopyComplete
 E:\GitRepository\Playbuh\ServerHost\obj\Debug\ServerHost.exe
 E:\GitRepository\Playbuh\ServerHost\obj\Debug\ServerHost.pdb
+E:\GitRepository\Playbuh\ServerHost\bin\Debug\DevExpress.Mvvm.v20.2.dll
+E:\GitRepository\Playbuh\ServerHost\bin\Debug\DevExpress.Mvvm.v20.2.xml

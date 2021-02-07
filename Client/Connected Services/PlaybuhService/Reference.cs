@@ -20,6 +20,24 @@ namespace Client.PlaybuhService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/GetEmployees", ReplyAction="http://tempuri.org/IServiceNetwork/GetEmployeesResponse")]
         System.Threading.Tasks.Task<BLogic.Model.Employee[]> GetEmployeesAsync(bool showArchive);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/AddEmployeeResponse")]
+        int AddEmployee(string firstName, string lastName, string middleName, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/AddEmployeeResponse")]
+        System.Threading.Tasks.Task<int> AddEmployeeAsync(string firstName, string lastName, string middleName, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveEmployeeResponse")]
+        void RemoveEmployee(int employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveEmployee", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveEmployeeResponse")]
+        System.Threading.Tasks.Task RemoveEmployeeAsync(int employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse")]
+        void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse")]
+        System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +73,30 @@ namespace Client.PlaybuhService {
         
         public System.Threading.Tasks.Task<BLogic.Model.Employee[]> GetEmployeesAsync(bool showArchive) {
             return base.Channel.GetEmployeesAsync(showArchive);
+        }
+        
+        public int AddEmployee(string firstName, string lastName, string middleName, string description) {
+            return base.Channel.AddEmployee(firstName, lastName, middleName, description);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddEmployeeAsync(string firstName, string lastName, string middleName, string description) {
+            return base.Channel.AddEmployeeAsync(firstName, lastName, middleName, description);
+        }
+        
+        public void RemoveEmployee(int employeeId) {
+            base.Channel.RemoveEmployee(employeeId);
+        }
+        
+        public System.Threading.Tasks.Task RemoveEmployeeAsync(int employeeId) {
+            return base.Channel.RemoveEmployeeAsync(employeeId);
+        }
+        
+        public void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName, string description) {
+            base.Channel.ChangeEmployeeFullName(employeeId, firstName, lastName, middleName, description);
+        }
+        
+        public System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description) {
+            return base.Channel.ChangeEmployeeFullNameAsync(employeeId, firstName, lastName, middleName, description);
         }
     }
 }
