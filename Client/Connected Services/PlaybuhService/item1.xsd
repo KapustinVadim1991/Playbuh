@@ -22,4 +22,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Employee" nillable="true" type="tns:Employee" />
+  <xs:complexType name="ArrayOfContragent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contragent" nillable="true" type="tns:Contragent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContragent" nillable="true" type="tns:ArrayOfContragent" />
+  <xs:complexType name="Contragent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsArchive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contragent" nillable="true" type="tns:Contragent" />
 </xs:schema>

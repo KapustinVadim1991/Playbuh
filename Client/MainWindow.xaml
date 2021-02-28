@@ -22,7 +22,7 @@
                 <dxb:BarButtonItemLink BarItemName="newItem"/>
             </dxr:RibbonControl.ToolbarItems>
             <dxr:RibbonDefaultPageCategory>
-                <dxr:RibbonPage Caption="Сотрудники">
+                <dxr:RibbonPage Caption="Playbuh">
                     <dxr:RibbonPageGroup Caption="Файл">
                         <dxb:BarButtonItem x:Name="newItem" Content="New" Glyph="{dx:DXImage SvgImages/Actions/New.svg}"/>
                         <dxb:BarItemSeparator/>
@@ -44,22 +44,41 @@
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
         </dxr:RibbonControl>
+        
         <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom">
             <dxr:RibbonStatusBarControl.RightItems>
                 <dxb:BarButtonItem x:Name="printItem" Content="Print" Glyph="{dx:DXImage SvgImages/Print/Print.svg}"/>
             </dxr:RibbonStatusBarControl.RightItems>
         </dxr:RibbonStatusBarControl>
-        <dxg:GridControl Name="employeesGrid" AutoGenerateColumns="AddNew" ItemsSource="{Binding Employees, Mode=TwoWay}" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionMode="Cell">
-            <dxg:GridControl.View>
-                <dxg:TableView 
+
+        <dx:DXTabControl x:Name="tabControl" SelectedItem="{Binding SelectedTabItem, Mode=OneWayToSource}">
+            <dx:DXTabItem Header="Сотрудники" x:Name="employeeTab">
+                <dxg:GridControl Name="employeesGrid" AutoGenerateColumns="AddNew" ItemsSource="{Binding Employees, Mode=TwoWay}" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" SelectionMode="Cell">
+                    <dxg:GridControl.View>
+                        <dxg:TableView 
                     AllowEditing="True" 
-                    NavigationStyle="Cell"
+                    NavigationStyle="Row"
                     Name="employeesTableView"
                     ValidateRow="employeesTableView_ValidateRow"
                     RowUpdated="employeesTableView_RowUpdated"
                     EditFormShowMode="InlineHideRow"
                     />
-            </dxg:GridControl.View>
-        </dxg:GridControl>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </dx:DXTabItem>
+
+            <dx:DXTabItem Header="Контрагенты"  x:Name="contragentTab">
+                <dxg:GridControl Name="contragentsGrid" AutoGenerateColumns="AddNew" ItemsSource="{Binding Contragents, Mode=TwoWay}" SelectedItem="{Binding SelectedContragent, Mode=TwoWay}" SelectionMode="Cell">
+                    <dxg:GridControl.View>
+                        <dxg:TableView 
+                    AllowEditing="True" 
+                    NavigationStyle="Row"
+                    Name="contragentsTableView"
+                    EditFormShowMode="InlineHideRow" RowUpdated="contragentsTableView_RowUpdated"
+                    />
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </dx:DXTabItem>
+        </dx:DXTabControl>        
     </DockPanel>
 </dx:ThemedWindow>

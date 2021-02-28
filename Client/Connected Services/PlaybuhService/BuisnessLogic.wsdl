@@ -61,6 +61,30 @@
   <wsdl:message name="IServiceNetwork_ChangeEmployeeFullName_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeEmployeeFullNameResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceNetwork_GetContragents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContragents" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_GetContragents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContragentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_AddContragent_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddContragent" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_AddContragent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddContragentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_ChangeContragentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeContragentData" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_ChangeContragentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeContragentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_RemoveContragent_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveContragent" />
+  </wsdl:message>
+  <wsdl:message name="IServiceNetwork_RemoveContragent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveContragentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceNetwork">
     <wsdl:operation name="GetEmployees">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/GetEmployees" message="tns:IServiceNetwork_GetEmployees_InputMessage" />
@@ -77,6 +101,22 @@
     <wsdl:operation name="ChangeEmployeeFullName">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName" message="tns:IServiceNetwork_ChangeEmployeeFullName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse" message="tns:IServiceNetwork_ChangeEmployeeFullName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContragents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/GetContragents" message="tns:IServiceNetwork_GetContragents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/GetContragentsResponse" message="tns:IServiceNetwork_GetContragents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddContragent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/AddContragent" message="tns:IServiceNetwork_AddContragent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/AddContragentResponse" message="tns:IServiceNetwork_AddContragent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContragentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeContragentData" message="tns:IServiceNetwork_ChangeContragentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/ChangeContragentDataResponse" message="tns:IServiceNetwork_ChangeContragentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveContragent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceNetwork/RemoveContragent" message="tns:IServiceNetwork_RemoveContragent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceNetwork/RemoveContragentResponse" message="tns:IServiceNetwork_RemoveContragent_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IServiceNetwork" type="tns:IServiceNetwork">
@@ -111,6 +151,42 @@
     </wsdl:operation>
     <wsdl:operation name="ChangeEmployeeFullName">
       <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContragents">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/GetContragents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContragent">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/AddContragent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContragentData">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/ChangeContragentData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveContragent">
+      <soap12:operation soapAction="http://tempuri.org/IServiceNetwork/RemoveContragent" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

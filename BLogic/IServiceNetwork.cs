@@ -21,7 +21,7 @@ namespace BLogic
         void ChangeEmployeeFullName(int employeeId, string firstName, string lastName, string middleName,
             string description = null);
 
-        /*
+        
         [OperationContract]
         Contragent[] GetContragents(bool showArchive);
 
@@ -29,9 +29,12 @@ namespace BLogic
         void AddContragent(string title, string comment);
 
         [OperationContract]
+        void ChangeContragentData(int contragentId, string title, string comment);
+
+        [OperationContract]
         void RemoveContragent(int contragentId);
 
-
+        /*
         [OperationContract]
         Item[] GetItems(bool showArchive);
 

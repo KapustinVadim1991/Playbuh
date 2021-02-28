@@ -34,6 +34,7 @@ namespace BLogic.Model
 
         [Display(AutoGenerateField = false)]
         public bool IsArchive { get; set; }
+
         public override string ToString()
         {
             return $"{LastName} {FirstName} {MiddleName}";

@@ -77,7 +77,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Helpers\TabsEnum.cs" />
+    <Compile Include="ViewModels\PlaybuhViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +124,7 @@
     <None Include="Connected Services\PlaybuhService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\BLogic.Model.Contragent.datasource" />
     <None Include="Properties\DataSources\BLogic.Model.Employee.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

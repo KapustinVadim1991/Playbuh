@@ -2,10 +2,12 @@ E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.dll.config
 E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.dll
 E:\GitRepository\Playbuh\BLogic\bin\Debug\BLogic.pdb
 E:\GitRepository\Playbuh\BLogic\bin\Debug\DataAccessLayer.dll
+E:\GitRepository\Playbuh\BLogic\bin\Debug\DevExpress.Mvvm.v20.2.dll
 E:\GitRepository\Playbuh\BLogic\bin\Debug\log4net.dll
 E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.dll
 E:\GitRepository\Playbuh\BLogic\bin\Debug\EntityFramework.dll
 E:\GitRepository\Playbuh\BLogic\bin\Debug\DataAccessLayer.pdb
+E:\GitRepository\Playbuh\BLogic\bin\Debug\DevExpress.Mvvm.v20.2.xml
 E:\GitRepository\Playbuh\BLogic\bin\Debug\log4net.xml
 E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.pdb
 E:\GitRepository\Playbuh\BLogic\bin\Debug\nunit.framework.xml
@@ -15,5 +17,3 @@ E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.csprojAssemblyReference.cache
 E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.csproj.CopyComplete
 E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.dll
 E:\GitRepository\Playbuh\BLogic\obj\Debug\BLogic.pdb
-E:\GitRepository\Playbuh\BLogic\bin\Debug\DevExpress.Mvvm.v20.2.dll
-E:\GitRepository\Playbuh\BLogic\bin\Debug\DevExpress.Mvvm.v20.2.xml

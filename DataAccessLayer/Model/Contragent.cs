@@ -16,7 +16,7 @@ namespace DataAccessLayer.Model
 
         [Column("id")]
         public int Id { get; set; }
-        
+
         [Column("title")]
         public string Title { get; set; }
 
@@ -27,3 +27,4 @@ namespace DataAccessLayer.Model
         public bool IsArchive { get; set; }
     }
 }
+

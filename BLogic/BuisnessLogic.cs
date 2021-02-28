@@ -54,17 +54,36 @@ namespace BLogic
         }
 
         #endregion Employee...
-        /*
+        
         #region Contragent...
 
         public Contragent[] GetContragents(bool showArchive)
         {
-            return dbAccess.GetContragents(showArchive);
+            DataAccessLayer.Model.Contragent[] contragents = dbAccess.GetContragents(showArchive);
+
+            List<Contragent> result = new List<Contragent>();
+
+            foreach (var contragent in contragents)
+            {
+                result.Add(new Contragent(contragent));
+            }
+
+            return result.ToArray();
         }
 
         public void AddContragent(string title, string comment)
         {
-            dbAccess.AddContragent(new Contragent(title, comment));
+            dbAccess.AddContragent(new DataAccessLayer.Model.Contragent(title, comment));
+        }
+
+        public void ChangeContragentData(int contragentId, string title, string comment)
+        {
+            dbAccess.UpdateContragent(new DataAccessLayer.Model.Contragent
+            {
+                Id = contragentId,
+                Title = title,
+                Comment = comment
+            });
         }
 
         public void RemoveContragent(int contragentId)
@@ -73,7 +92,7 @@ namespace BLogic
         }
 
         #endregion Contragent...
-
+        /*
         #region Item...
 
         public Item[] GetItems(bool showArchive)

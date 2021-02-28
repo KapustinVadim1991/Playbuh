@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BuisnessLogic.cs" />
     <Compile Include="IServiceNetwork.cs" />
+    <Compile Include="Model\Contragent.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

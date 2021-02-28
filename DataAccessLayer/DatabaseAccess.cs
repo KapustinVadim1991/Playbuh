@@ -127,6 +127,23 @@ namespace DataAccessLayer
             }
         }
 
+        public void UpdateContragent(Contragent contragent)
+        {
+            Validation(contragent);
+
+            using (var context = GetContext())
+            {
+                if (context.Contragent.FirstOrDefault(x => x.Id == contragent.Id) == null)
+                {
+                    throw new ArgumentNullException("Данный контрагент не найден.");
+                }
+
+                context.Contragent.AddOrUpdate(contragent);
+                context.SaveChanges();
+            }
+        }
+
+
         public void RemoveContragent(int contragentId)
         {
             using (var context = GetContext())

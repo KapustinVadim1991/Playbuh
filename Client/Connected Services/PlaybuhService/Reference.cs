@@ -38,6 +38,30 @@ namespace Client.PlaybuhService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullName", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeEmployeeFullNameResponse")]
         System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/GetContragents", ReplyAction="http://tempuri.org/IServiceNetwork/GetContragentsResponse")]
+        BLogic.Model.Contragent[] GetContragents(bool showArchive);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/GetContragents", ReplyAction="http://tempuri.org/IServiceNetwork/GetContragentsResponse")]
+        System.Threading.Tasks.Task<BLogic.Model.Contragent[]> GetContragentsAsync(bool showArchive);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddContragent", ReplyAction="http://tempuri.org/IServiceNetwork/AddContragentResponse")]
+        void AddContragent(string title, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/AddContragent", ReplyAction="http://tempuri.org/IServiceNetwork/AddContragentResponse")]
+        System.Threading.Tasks.Task AddContragentAsync(string title, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeContragentData", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeContragentDataResponse")]
+        void ChangeContragentData(int contragentId, string title, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/ChangeContragentData", ReplyAction="http://tempuri.org/IServiceNetwork/ChangeContragentDataResponse")]
+        System.Threading.Tasks.Task ChangeContragentDataAsync(int contragentId, string title, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveContragent", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveContragentResponse")]
+        void RemoveContragent(int contragentId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceNetwork/RemoveContragent", ReplyAction="http://tempuri.org/IServiceNetwork/RemoveContragentResponse")]
+        System.Threading.Tasks.Task RemoveContragentAsync(int contragentId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +121,38 @@ namespace Client.PlaybuhService {
         
         public System.Threading.Tasks.Task ChangeEmployeeFullNameAsync(int employeeId, string firstName, string lastName, string middleName, string description) {
             return base.Channel.ChangeEmployeeFullNameAsync(employeeId, firstName, lastName, middleName, description);
+        }
+        
+        public BLogic.Model.Contragent[] GetContragents(bool showArchive) {
+            return base.Channel.GetContragents(showArchive);
+        }
+        
+        public System.Threading.Tasks.Task<BLogic.Model.Contragent[]> GetContragentsAsync(bool showArchive) {
+            return base.Channel.GetContragentsAsync(showArchive);
+        }
+        
+        public void AddContragent(string title, string comment) {
+            base.Channel.AddContragent(title, comment);
+        }
+        
+        public System.Threading.Tasks.Task AddContragentAsync(string title, string comment) {
+            return base.Channel.AddContragentAsync(title, comment);
+        }
+        
+        public void ChangeContragentData(int contragentId, string title, string comment) {
+            base.Channel.ChangeContragentData(contragentId, title, comment);
+        }
+        
+        public System.Threading.Tasks.Task ChangeContragentDataAsync(int contragentId, string title, string comment) {
+            return base.Channel.ChangeContragentDataAsync(contragentId, title, comment);
+        }
+        
+        public void RemoveContragent(int contragentId) {
+            base.Channel.RemoveContragent(contragentId);
+        }
+        
+        public System.Threading.Tasks.Task RemoveContragentAsync(int contragentId) {
+            return base.Channel.RemoveContragentAsync(contragentId);
         }
     }
 }
